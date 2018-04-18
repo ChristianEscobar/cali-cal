@@ -1,0 +1,17 @@
+.day-container {
+  width: 150px;
+  height: 150px;
+  float: left;
+  display: inline;
+}
+
+.events-container {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  width: 150px;
+  height: 150px;
+}
+
+.events-container:hover {
+  background-color: lightgray;
+}
