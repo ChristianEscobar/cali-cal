@@ -1,0 +1,14 @@
+{
+  "name": "project-example",
+  "version": "1.0.0",
+  "main": "server/index.js",
+  "license": "MIT",
+  "scripts": {
+    "preinstall": "npm install --prefix server && npm install --prefix client && cd client && npm run build && cd ..",
+    "start": "node server/index.js"
+  },
+  "cacheDirectories": [
+    "server/node_modules",
+    "client/node_modules"
+  ]
+}
