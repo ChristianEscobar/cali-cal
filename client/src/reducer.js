@@ -1,11 +1,12 @@
-/*
+
 import { actionNames } from './actions';
 
 export const initialState = {
   days: {
-    0: [ { name: 'special event' }, { name: 'regular event '} ],
+    0: [  { name: 'Team meeting', startTime: '8:00am' }, 
+          { name: 'UAT definition', startTime: '3:00pm'} ],
     1: [],
-    2: [ { name: 'house party'} ],
+    2: [ { name: 'house party', startTime: '12:00pm'} ],
     3: [],
     4: [],
     5: [],
@@ -47,4 +48,3 @@ const reducer = (state = initialState, action) => {
 }
 
 export default reducer;
-*/

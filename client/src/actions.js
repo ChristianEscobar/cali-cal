@@ -1,4 +1,4 @@
-/*
+
 export const actionNames = {
   changeDate: 'CHANGE_DATE',
   requestStarted: 'REQUEST_STARTED',
@@ -40,4 +40,3 @@ export function makeRequest (requestBody) {
       });
   }
 }
-*/
