@@ -9,4 +9,6 @@ app.get("/hello", (req, res) => {
   res.send("hello world");
 });
 
+app.use(express.static(`${__dirname}/public`));
+
 module.exports = app;
