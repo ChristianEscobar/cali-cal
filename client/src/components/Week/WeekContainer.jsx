@@ -1,27 +1,17 @@
-import React, { Component } from 'react';
-import Day from './Day';
+import { connect } from 'react-redux';
+import Week from './Week';
+import * as selectors from '../../selectors';
+import * as actions from '../../actions';
 
-export default class WeekContainer extends Component {
-  constructor(props) {
-    super(props);
-
-    // Set initial state
-
-    // Create array storing days of week
-    this.daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-    // Bind functions
-    this.createDaysOfWeek = this.createDaysOfWeek.bind(this);
+const mapStateToProps = (state) => {
+  return {
+    days: selectors.getDayAndCounts(state),
+    selectedDay: state.selectedDay,
   }
+}
 
-  // Create days of week
-  createDaysOfWeek() {
-    return this.daysOfWeek.map( day => <Day className="day" key={day} day={day} dayCount={0} />);
-  }
+const mapStateToDispatch = (dispatch) => ({
+  changeDay: (day) => dispatch(actions.changeDateAction(day)),
+});
 
-  render() {
-    return(
-      this.createDaysOfWeek()
-    );
-  }
-};
+export default connect(mapStateToProps, mapStateToDispatch)(Week);

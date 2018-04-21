@@ -1,17 +1,16 @@
-/*
 import { actionNames } from './actions';
 
 export const initialState = {
   days: {
-    0: [ { name: 'special event' }, { name: 'regular event '} ],
-    1: [],
-    2: [ { name: 'house party'} ],
-    3: [],
-    4: [],
-    5: [],
-    6: [],
+    0: { name: "Sunday", events: []},
+    1: { name: "Monday", events: [ {name: 'nap'} ]},
+    2: { name: "Tuesday", events: [ { name: 'special event' }, { name: 'regular event '} ] },
+    3: { name: "Wednesday", events: [] },
+    4: { name: "Thursday", events: [ {name: 'house party'} ] },
+    5: { name: "Friday", events: [] },
+    6: { name: "Saturday", events: [] },
   },
-  currentDay: 0,
+  selectedDay: 0,
   savingStateStatus: 'unknown',
 };
 
@@ -21,7 +20,7 @@ const reducer = (state = initialState, action) => {
       return Object.assign(
         {},   
         state,
-        { currentDay: action.payload.day}
+        { selectedDay: action.payload.day}
       );
     case actionNames.requestStarted:
       return Object.assign(
@@ -47,4 +46,3 @@ const reducer = (state = initialState, action) => {
 }
 
 export default reducer;
-*/

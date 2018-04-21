@@ -15,3 +15,8 @@
 .events-container:hover {
   background-color: lightgray;
 }
+
+.events-container-selected {
+  background-color: lightgray;
+}
+

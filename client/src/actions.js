@@ -1,4 +1,3 @@
-/*
 export const actionNames = {
   changeDate: 'CHANGE_DATE',
   requestStarted: 'REQUEST_STARTED',
@@ -13,6 +12,7 @@ export const changeDateAction = (day) => ({
   },
 });
 
+/*
 export const requestStarted = {
   type: actionNames.requestStarted,
 };
@@ -27,7 +27,6 @@ export const saveCal = (dispatch) => {
   }, 1000);
   dispatch(makeRequest({ theSecret: 42 }));
 };
-
 
 export function makeRequest (requestBody) {
   return function (dispatch) {

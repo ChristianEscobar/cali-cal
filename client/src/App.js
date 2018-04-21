@@ -6,9 +6,9 @@ import Week from './components/Week/WeekContainer';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Week />
-      </div>
+        <div className="App">
+          <Week />
+        </div>
     );
   }
 }
