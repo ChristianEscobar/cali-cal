@@ -3,13 +3,13 @@ const bodyParser = require("body-parser");
 
 const app = express();
 app.use(bodyParser.json());
-
-// requiring models for syncing
-const db = require('./models');
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Test route
 app.get("/hello", (req, res) => {
   res.send("hello world");
 });
+
+app.use(express.static(`${__dirname}/public`));
 
 module.exports = app;
