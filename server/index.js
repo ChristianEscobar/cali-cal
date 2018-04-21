@@ -16,7 +16,12 @@ const PORT = process.env.PORT || 3001;
 // requiring models for syncing
 const db = require('./models');
 
-db.sequelize.sync({force: true})
+const syncOptions = {}
+if (process.env.NODE_ENV !== 'production') {
+    syncOptions.force = true;
+}
+
+db.sequelize.sync(syncOptions)
     .then(() => {
         const server = app.listen(PORT, () => {
             console.log(`listening on port ${server.address().port}`);
