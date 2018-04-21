@@ -10,4 +10,4 @@ export const getDayAndCounts = (state) =>
   .map(day => state.days[day]);
 
 
-export const getTodaysEvents = (state) => state.currentDay === null ? [] : state.days[state.currentDay];
+export const getTodaysEvents = (state) => state.currentDay === null ? [] : state.days[state.selectedDay].events;
