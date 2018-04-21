@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
       references: {
         model: Task,
         key: 'id',
-        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+        // deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
       }
     },
     name: {
