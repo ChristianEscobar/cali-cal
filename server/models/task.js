@@ -9,14 +9,14 @@ module.exports = function(sequelize, DataTypes) {
     },
     userId: {
       type: DataTypes.INTEGER,
-      references: {
-        // This is a reference to another model
-        model: User,
-        // This is the column name of the referenced model
-        key: 'id',
-        // This declares when to check the foreign key constraint. PostgreSQL only.
-        // deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
-      }
+      // references: {
+      //   // This is a reference to another model
+      //   model: User,
+      //   // This is the column name of the referenced model
+      //   key: 'id',
+      //   // This declares when to check the foreign key constraint. PostgreSQL only.
+      //   // deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+      // }
     },
     event: {
       type: DataTypes.STRING,
@@ -32,14 +32,13 @@ module.exports = function(sequelize, DataTypes) {
     endDate: {
       type: DataTypes.DATEONLY,
       // allowNull: false
-    },
-    // {
-    //   classMethods: {
-    //     associate: function(models) {
-    //       Task.hasOne(models.User);
-    //     }
-    //   }
-    // }
+    }
+   }, {
+    classMethods: {
+      associate: function(models) {
+        Task.hasOne(models.User);
+      }
+    }
   });
   return Task;
-}
+};
