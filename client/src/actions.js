@@ -38,5 +38,4 @@ export function makeRequest (requestBody) {
         dispatch()
       });
   }
-}
-*/
+}*/

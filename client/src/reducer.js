@@ -1,12 +1,14 @@
+
 import { actionNames } from './actions';
 
 export const initialState = {
   days: {
-    0: { name: "Sunday", events: []},
+    0: { name: "Sunday", events: [{ name: 'Team meeting', startTime: '8:00am' }, 
+          { name: 'UAT definition', startTime: '3:00pm'}]},
     1: { name: "Monday", events: [ {name: 'nap'} ]},
-    2: { name: "Tuesday", events: [ { name: 'special event' }, { name: 'regular event '} ] },
+    2: { name: "Tuesday", events: [ { name: 'house party', startTime: '12:00pm'} ] },
     3: { name: "Wednesday", events: [] },
-    4: { name: "Thursday", events: [ {name: 'house party'} ] },
+    4: { name: "Thursday", events: [ {name: 'house party', startTime: '8:00pm'} ] },
     5: { name: "Friday", events: [] },
     6: { name: "Saturday", events: [] },
   },

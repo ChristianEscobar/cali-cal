@@ -1,3 +1,4 @@
+
 export const getEventCounts = (state) => Object.keys(state.days)
   .sort()
   .map(day => state.days[day].events)
