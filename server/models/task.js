@@ -32,9 +32,7 @@ module.exports = function(sequelize, DataTypes) {
     endDate: {
       type: Sequelize.DATEONLY,
       // allowNull: false
-    },
-    createdAt: Sequelize.DATE,
-    updatedAt: Sequelize.DATE,
+    }
   });
   return Task;
 }
