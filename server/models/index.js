@@ -10,8 +10,10 @@ var db        = {};
 
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable], config);
+  console.log(`connecting to db @ ${config.use_env_variable}`)
 } else {
   var sequelize = new Sequelize(config.database, config.username, config.password, config);
+  console.log(`Connection to db @ ${config.host}`)
 }
 
 fs

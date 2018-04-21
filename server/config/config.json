@@ -14,10 +14,6 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "",
-    "password": "",
-    "database": "calendar_db",
-    "host": "",
-    "dialect": "mysql"
+    "use_env_variable": "JAWSDB_URL"
   }
 }
