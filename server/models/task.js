@@ -25,20 +25,24 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    startDate: {
+    startTime: {
       type: DataTypes.DATEONLY,
       // allowNull: false
     },
-    endDate: {
+    endTime: {
       type: DataTypes.DATEONLY,
       // allowNull: false
-    }
-   }, {
-    classMethods: {
-      associate: function(models) {
-        Task.hasOne(models.User);
+    },
+    dayID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    }, {
+      classMethods: {
+        associate: function(models) {
+          Task.hasOne(models.User);
+        }
       }
-    }
+    },
   });
   return Task;
 };
