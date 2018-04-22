@@ -36,13 +36,13 @@ module.exports = function(sequelize, DataTypes) {
     dayID: {
       type: DataTypes.INTEGER,
       allowNull: false,
-    }, {
-      classMethods: {
-        associate: function(models) {
-          Task.hasOne(models.User);
-        }
-      }
     },
   });
   return Task;
+
+  // Class Method
+  Task.associate = function (models) {
+    Task.hasOne(models.User);
+  };
 };
+
