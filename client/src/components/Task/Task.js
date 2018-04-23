@@ -1,5 +1,7 @@
 import React from 'react';
-
+import './Task.css';
+import DeleteButton from '../DeleteButton/DeleteButtonContainer'
+import EditButton from '../EditButton/EditButtonContainer'
 export default class Task extends React.Component {
   render() {
       const styles={
@@ -8,19 +10,41 @@ export default class Task extends React.Component {
             margin:20,
           },
       }
-    return (
-      <div className='list-group' style={styles.container}>
-         <button  className="list-group-item disabled">
-            Tasks
-        </button>
-        {this.props.events.map(event => 
-            <button href=" " 
-                    className='list-group-item ' 
-                    key={event.name}>{event.startTime} 
-                    <strong>{event.name}</strong>  
-            </button>
-        )}
-      </div>
-    )
+    if(this.props.events.length > 0){
+        return (
+            <div className="list-overflow-container" style={styles.container}>
+                    
+                    <button  className="list-group-item disabled">
+                        Tasks
+                    </button>
+                        <ul className="list-group">
+                            {this.props.events.map(event => 
+                                    <li className="list-group-item" number={this.props.events.length}
+                                        /* className='list-group-item item parent'  */
+                                        key={event.name}>
+                                        <span className='item'>{event.startTime} <strong>{event.name}</strong></span>
+                                        <DeleteButton />  <EditButton />
+                                                                        
+                                    </li>
+                            )}
+                        </ul>
+
+            </div>
+          )
+    }else{
+        return (
+            <div className='list-group' style={styles.container}>
+               <button  className="list-group-item disabled">
+                  Tasks
+              </button>
+
+                <button href=" " className='list-group-item '>
+                    No tasks for today!
+                </button>
+              
+            </div>
+        )
+    }  
+    
   }
 }
