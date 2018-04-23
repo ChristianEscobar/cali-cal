@@ -12,7 +12,7 @@ export const changeDateAction = (day) => ({
   },
 });
 
-/*
+
 export const requestStarted = {
   type: actionNames.requestStarted,
 };
@@ -25,7 +25,7 @@ export const saveCal = (dispatch) => {
       type: actionNames.requestComplete,
     });
   }, 1000);
-  dispatch(makeRequest({ theSecret: 42 }));
+  // dispatch(makeRequest({ theSecret: 42 }));
 };
 
 export function makeRequest (requestBody) {
@@ -38,4 +38,4 @@ export function makeRequest (requestBody) {
         dispatch()
       });
   }
-}*/
+}

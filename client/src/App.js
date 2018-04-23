@@ -11,14 +11,18 @@ import { Router, Link } from 'react-router-dom';
 class App extends Component {
   render() {
     return (
-      <div>
-        <Week />
-        <Task />
-        {/* <SaveButton /> */}
-        <Link to="/edit">
-          <button>Test Navigation</button>
-        </Link>
-      </div>
+      <div className='container'>
+        <div className='row'>
+          <Week />
+        </div>
+        <div className='row'>
+          <Task />
+        </div>
+      </div>  
+        
+        
+        /* <SaveButton /> */
+      
        
     );
   }
