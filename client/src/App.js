@@ -6,6 +6,7 @@ import './App.css';
 // import SaveButton from './SaveButtonContainer';
 
 import Week from './components/Week/WeekContainer';
+import { Router, Link } from 'react-router-dom';
 
 class App extends Component {
   render() {
@@ -14,6 +15,9 @@ class App extends Component {
         <Week />
         <Task />
         {/* <SaveButton /> */}
+        <Link to="/edit">
+          <button>Test Navigation</button>
+        </Link>
       </div>
        
     );
