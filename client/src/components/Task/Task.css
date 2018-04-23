@@ -1,0 +1,13 @@
+.container{
+    display:flex;
+    justify-content: space-between;
+}
+
+.parent{
+    position: relative;
+}
+.trash{
+    /* position: absolute; */
+    /* right:20px; */
+    float: right;
+}
