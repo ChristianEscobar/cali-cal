@@ -7,11 +7,6 @@ module.exports = function(sequelize, DataTypes) {
     },
     taskId: {
       type: DataTypes.INTEGER,
-      // references: {
-      //   model: Task,
-      //   key: 'id',
-      //   // deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
-      // }
     },
     name: {
       type: DataTypes.STRING,
@@ -22,4 +17,9 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
   return User;
+
+  // Class Method
+  User.associate = function (models) {
+    User.hasMany(models.Task);
+  };
 };
