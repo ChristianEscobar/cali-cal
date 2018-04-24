@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const routes = require("./routes");
 
 const app = express();
 app.use(bodyParser.json());
@@ -11,5 +12,8 @@ app.get("/hello", (req, res) => {
 });
 
 app.use(express.static(`${__dirname}/public`));
+
+// Add routes, both API and view
+app.use(routes);
 
 module.exports = app;

@@ -15,7 +15,7 @@ Platform:
 
 npm manifest: 
   {
-    "name": "project-example",
+    "name": "cali-cal",
     "version": "1.0.0",
     "main": "server/index.js",
     "license": "MIT",
