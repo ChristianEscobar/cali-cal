@@ -1,25 +1,18 @@
-export const dayID = (dayID) => ({
+export const dayID = (dayID) => {
   switch (dayID) {
     case 0:
-        return "Sunday",
-        break,
+        return  "Sunday";
     case 1:
-        return "Monday",
-        break;
+        return "Monday";
     case 2:
-        return "Tuesday",
-        break;
+        return "Tuesday";
     case 3:
-        return "Wednesday",
-        break,
+        return "Wednesday";
     case 4:
-        return "Thursday",
-        break,
+        return "Thursday";
     case 5:
-        return "Friday",
-        break,
+        return "Friday";
     case 6:
-        return "Saturday",
-        break,
+        return "Saturday";
   }
-});
+};
