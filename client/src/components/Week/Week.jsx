@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
 import Day from './Day';
+import { dayID } from '../../utils/helper';
 
 export default class Week extends Component {
   render() {
     return (
       <div>
-        {this.props.days.map( (dayObj, dayNumber) => 
+        {this.props.days.map( (events, dayNumber) => 
           (dayNumber === this.props.selectedDay) ?
-            <Day key={dayObj.name} 
+            <Day key={dayNumber} 
                 selectedDay={true} 
                 dayNumber={dayNumber} 
-                dayName={dayObj.name} 
+                dayName={dayID(dayNumber)} 
                 changeDay={this.props.changeDay} 
-                eventCount={dayObj.events.length}/>
+                eventCount={events.length}/>
             :
-            <Day key={dayObj.name} 
+            <Day key={dayNumber} 
                 selectedDay={false} 
                 dayNumber={dayNumber} 
-                dayName={dayObj.name} 
+                dayName={dayID(dayNumber)} 
                 changeDay={this.props.changeDay} 
-                eventCount={dayObj.events.length}/>
+                eventCount={events.length}/>
         )}
       </div>
     )
