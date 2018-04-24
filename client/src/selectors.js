@@ -1,7 +1,7 @@
 
 export const getEventCounts = (state) => Object.keys(state.days)
   .sort()
-  .map(day => state.days[day].events)
+  .map(day => state.days[day])
   .map(events => events.length);
 
 export const getDayAndCounts = (state) =>
@@ -10,4 +10,4 @@ export const getDayAndCounts = (state) =>
   .map(day => state.days[day]);
 
 
-export const getTodaysEvents = (state) => state.currentDay === null ? [] : state.days[state.selectedDay].events;
+export const getTodaysEvents = (state) => state.currentDay === null ? [] : state.days[state.selectedDay];
