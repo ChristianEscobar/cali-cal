@@ -50,6 +50,12 @@ const reducer = (state = initialState, action) => {
         state,
         { savingStateStatus: 'error' }
       );
+    case actionNames.setInitial:
+      return Object.assign(
+        {},
+        state,
+        { savingStateStatus: 'hello' }
+      );
     default:
       return state;
   }

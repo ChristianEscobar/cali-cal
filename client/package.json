@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
+    "es6-promise": "^4.2.4",
+=======
     "history": "^4.7.2",
+>>>>>>> 0ac41b3cd44347615e9d2dac14a6546e08caef64
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",
@@ -19,5 +23,6 @@
     "build": "react-scripts build && rm -rf ../server/public && mv build ../server/public",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "proxy": "http://localhost:3001/"
 }
