@@ -18,7 +18,7 @@ const db = require('./models');
 
 const syncOptions = {}
 if (process.env.NODE_ENV !== 'production') {
-    syncOptions.force = true;
+    syncOptions.force = false;
 }
 
 db.sequelize.sync(syncOptions)
