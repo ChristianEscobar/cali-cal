@@ -3,6 +3,10 @@ import Day from './Day';
 import { dayID } from '../../utils/helper';
 
 export default class Week extends Component {
+  
+  componentWillMount(){
+    this.props.saveCal();
+  }
   render() {
     return (
       <div>

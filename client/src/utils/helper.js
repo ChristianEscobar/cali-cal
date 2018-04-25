@@ -14,5 +14,7 @@ export const dayID = (dayID) => {
         return "Friday";
     case 6:
         return "Saturday";
+    default:
+        break;
   }
 };
