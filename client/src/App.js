@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-// import Detail from './DetailContainer';
 import Task from './components/Task/TaskContainer';
 import './App.css';
 import Header from './components/Header';
-// import TaskList from './components/Task/TaskList';
-// import SaveButton from './SaveButtonContainer';
-
 import Week from './components/Week/WeekContainer';
 // import { Router, Link } from 'react-router-dom';
+import { Router, Link } from 'react-router-dom';
+import AddEventButton from './components/AddEventButton/AddEventButtonContainer';
 
 class App extends Component {
   render() {
@@ -22,14 +20,14 @@ class App extends Component {
           </div>
           <div className='row'>
             <Task />
+            <div className='add-event-btn'>
+              <Link to="/calendar/edit">
+                <AddEventButton />
+              </Link>
+            </div>
           </div>
         </div>  
       </div>
-        
-        
-        /* <SaveButton /> */
-      
-       
     );
   }
 }
