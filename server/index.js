@@ -17,9 +17,9 @@ const PORT = process.env.PORT || 3001;
 const db = require('./models');
 
 const syncOptions = {}
-if (process.env.NODE_ENV !== 'production') {
-    syncOptions.force = true;
-}
+// if (process.env.NODE_ENV !== 'production') {
+//     syncOptions.force = false;
+// }
 
 db.sequelize.sync(syncOptions)
     .then(() => {

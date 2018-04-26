@@ -19,10 +19,9 @@ export default class Task extends React.Component {
                     </button>
                         <ul className="list-group">
                             {this.props.events.map(event => 
-                                    <li className="list-group-item" number={this.props.events.length}
-                                        /* className='list-group-item item parent'  */
-                                        key={event.name}>
-                                        <span className='item'>{event.startTime} <strong>{event.name}</strong></span>
+                                    <li key={event.event} className="list-group-item" 
+                                    number={this.props.events.length}>
+                                        <span className='item'>{event.startTime} <strong>{event.event}</strong></span>
                                         <DeleteButton />  <EditButton />
                                                                         
                                     </li>

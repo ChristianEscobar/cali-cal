@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+// import App from './App';
 
 // redux stuff
 import { Provider } from 'react-redux';
@@ -12,7 +12,8 @@ import logger from 'redux-logger';
 import Root from './components/Root';
 
 // react-router stuff
-import { routerMiddleware, ConnectedRouter, BrowserRouter as Router, Route } from 'react-router-redux';
+// import { routerMiddleware, ConnectedRouter, BrowserRouter as Router, Route } from 'react-router-redux';
+import { routerMiddleware } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 
 // react-form stuff

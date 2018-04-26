@@ -23,6 +23,42 @@ export const requestStarted = {
 };
 
 export const saveCal = (dispatch) => {
+  const loadTasks = (tasks) => {
+    
+    const newDays = {0:[],1:[],2:[],3:[],4:[],5:[],6:[]};
+    for(var i=0; i < tasks.length; i++){
+      switch (tasks[i].dayID){
+        case 0:
+          newDays[0].push(tasks[i]);
+          break;
+        case 1:
+          newDays[1].push(tasks[i]);
+          break;
+        case 2:
+          newDays[2].push(tasks[i]);
+          break;
+        case 3:
+          newDays[3].push(tasks[i]);
+          break;
+        case 4:
+          newDays[4].push(tasks[i]);
+          break;
+        case 5:
+          newDays[5].push(tasks[i]);
+          break;
+        case 6:
+          newDays[6].push(tasks[i]);
+          break;
+        default:
+          break;
+      }  
+    }
+    // console.log(newDays);
+    return newDays;
+  }
+
+  
+  // dispatch(requestStarted);
   fetch('/api/tasks/')
       .then(function(response) {
           return response.json();
@@ -31,7 +67,11 @@ export const saveCal = (dispatch) => {
         // })
       }) 
       .then(function(tasks) {
-        console.log(tasks);
+        let days = loadTasks(tasks);
+        dispatch({
+          type: actionNames.setInitial,
+          days: days,
+        });
       })
       .catch((error)=>console.log(error));
   

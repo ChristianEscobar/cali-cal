@@ -13,6 +13,11 @@ const mapStateToProps = (state) => {
 
 const mapStateToDispatch = (dispatch) => ({
   changeDay: (day) => dispatch(actions.changeDateAction(day)),
+  saveCal: ()=> dispatch(actions.saveCal)
 });
+
+// const mapDispatchToProps = (dispatch) => ({
+//   saveCal: ()=> dispatch(actions.saveCal),
+// });
 
 export default connect(mapStateToProps, mapStateToDispatch)(Week);
