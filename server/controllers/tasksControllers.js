@@ -4,12 +4,14 @@ var Task = db.task;
 
 // Defining methods for the booksController
 module.exports = {
+    //get all tasks
     findAll: function(req, res) {
         Task.findAll().
             then(function(tasks){
                 res.send(tasks)
         }); 
     },
+    //get tasks by day
     findByDayId: function(req, res){
         Task.findAll({
         where:{
@@ -19,15 +21,24 @@ module.exports = {
     .then(function(tasks){
         res.send(tasks)
     })
-  },
-  remove: function(req, res) {
+    },
+    //delete a task
+    remove: function(req, res) {
     Task.destroy({
         where:{
             id:req.params.id
         }
     })
     .then(() => res.send("Task deleted!"))
-    }
+    },
+    //update a task by id
+    update: function(req, res) {
+        Task.update(req.body,{
+            where:{
+                id: req.params.id
+            }
+        }).then(task => res.status(200).end())
+    },
 //   findById: function(req, res) {
 //     db.Book
 //       .findById(req.params.id)
