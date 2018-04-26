@@ -68,10 +68,12 @@ export function addEvent() {
     // Get values from state from the form reducer
     const form = getState().form;
 
+    //console.log("in addEvent", form.eventForm.values.event);
+
     // Create object to hold the values from the form
     const newEvent = {
       // Use name assigned to the form
-      event: form.eventForm.event.value,
+      event: form.eventForm.values.event,
     }
 
     dispatch({
