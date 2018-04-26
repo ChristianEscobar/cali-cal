@@ -4,9 +4,10 @@ import * as selectors from '../../selectors';
 import * as actions from '../../actions';
 
 const mapStateToProps = (state) => {
+  
   return {
-    days: selectors.getDayAndCounts(state),
-    selectedDay: state.selectedDay,
+    days: selectors.getDayAndCounts(state.reducer),
+    selectedDay: state.reducer.selectedDay,
   }
 }
 

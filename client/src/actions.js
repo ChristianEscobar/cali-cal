@@ -7,6 +7,7 @@ export const actionNames = {
   requestComplete: 'REQUEST_COMPLETE',
   requestError: 'REQUEST_ERROR',
   setInitial: 'INITIAL_STATE',
+  addEvent: 'ADD_EVENT',
 };
 
 export const changeDateAction = (day) => ({
@@ -20,7 +21,6 @@ export const changeDateAction = (day) => ({
 export const requestStarted = {
   type: actionNames.requestStarted,
 };
-
 
 export const saveCal = (dispatch) => {
   fetch('/api/tasks/')
@@ -60,5 +60,24 @@ export function makeRequest (requestBody) {
       // .catch(() => {
       //   dispatch()
       // });
+  }
+}
+
+export function addEvent() {
+  return (dispatch, getState) => {
+    // Get values from state from the form reducer
+    const form = getState().form;
+
+    // Create object to hold the values from the form
+    const newEvent = {
+      // Use name assigned to the form
+      event: form.eventForm.event.value,
+    }
+
+    dispatch({
+      type: actionNames.addEvent,
+      newEvent,
+
+    });
   }
 }
