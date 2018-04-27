@@ -7,8 +7,8 @@ export default class Header extends React.Component {
       <div className="header">
         <div>
           <a href="">
-            {/* <i class="far fa-calendar"></i> */}
-            This is the header
+            <i className="fa fa-calendar" aria-hidden="true"></i>
+            Calendar
           </a>
         </div>
       </div>
