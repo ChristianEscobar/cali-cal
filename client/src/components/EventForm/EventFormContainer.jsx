@@ -3,7 +3,9 @@ import * as selectors from '../../selectors';
 import * as actions from '../../actions';
 import EventForm from './EventForm';
 
-const mapStateToProps = () => ({});
+const mapStateToProps = () => ({
+  
+});
 
 const mapDispatchToProps = (dispatch) => ({
   addEvent: () => dispatch(actions.addEvent()),

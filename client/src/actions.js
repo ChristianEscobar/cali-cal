@@ -8,7 +8,18 @@ export const actionNames = {
   requestError: 'REQUEST_ERROR',
   setInitial: 'INITIAL_STATE',
   addEvent: 'ADD_EVENT',
+  editEvent: "EDIT_EVENT",
 };
+
+export const editEvent = (event, start, end) => ({
+  type: actionNames.editEvent,
+  payload: {
+    editEvent: true,
+    event,
+    start,
+    end,
+  },
+});
 
 export const changeDateAction = (day) => ({
   type: actionNames.changeDate,
@@ -108,18 +119,20 @@ export function addEvent() {
     // Get values from state from the form reducer
     const form = getState().form;
 
-    //console.log("in addEvent", form.eventForm.values.event);
+    console.log("IN ADDEVENT", form.eventForm.values);
 
     // Create object to hold the values from the form
     const newEvent = {
       // Use name assigned to the form
       event: form.eventForm.values.event,
+      startTime: form.eventForm.values.startTime,
+      endTime: form.eventForm.values.endTime,
+      allDay: form.eventForm.values.allDay,
     }
 
     dispatch({
       type: actionNames.addEvent,
       newEvent,
-
     });
   }
 }

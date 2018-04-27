@@ -10,6 +10,7 @@ export default class Task extends React.Component {
             margin:20,
           },
       }
+
     if(this.props.events.length > 0){
         return (
             <div className="list-overflow-container" style={styles.container}>
@@ -18,11 +19,11 @@ export default class Task extends React.Component {
                         Tasks
                     </button>
                         <ul className="list-group">
-                            {this.props.events.map(event => 
+                            {this.props.events.map( event => 
                                     <li key={event.event} className="list-group-item" 
                                     number={this.props.events.length}>
                                         <span className='item'>{event.startTime} <strong>{event.event}</strong></span>
-                                        <DeleteButton />  <EditButton />
+                                        <DeleteButton />  <EditButton event={event.event} start={event.startTime} end={event.endTime} />
                                                                         
                                     </li>
                             )}

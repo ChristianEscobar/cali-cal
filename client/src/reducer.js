@@ -63,7 +63,11 @@ export const initialState = {
     6: [],
   },
   selectedDay: 0,
+  event: "",
+  eventStart: "",
+  eventEnd: "",
   savingStateStatus: 'unknown',
+  editEvent: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -97,6 +101,16 @@ const reducer = (state = initialState, action) => {
         {},
         state,
         { days: action.days }
+      );
+    case actionNames.editEvent:
+      return Object.assign(
+        {},
+        state,
+        { editEvent: true,
+          event: action.payload.event,
+          eventStart: action.payload.start,
+          eventEnd: action.payload.end,
+        }
       );
     default:
       return state;

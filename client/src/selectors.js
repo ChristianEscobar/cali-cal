@@ -11,3 +11,11 @@ export const getDayAndCounts = (state) =>
 
 
 export const getTodaysEvents = (state) => state.reducer.currentDay === null ? [] : state.reducer.days[state.reducer.selectedDay];
+
+export const getSelectedEvent = (state) => {
+  return {
+    event: state.reducer.event,
+    start: state.reducer.start,
+    end: state.reducer.end,
+  }
+}
