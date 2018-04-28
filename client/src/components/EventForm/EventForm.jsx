@@ -15,15 +15,15 @@ export default class EventForm extends Component {
             <form>
               <div>
                 <label htmlFor="event">Event: </label>
-                <input name="event" type="input" value={this.props.eventData.event}/>
+                <input name="event" type="input" value={this.props.eventData.event} onChange={this.props.changeEvent}/>
               </div>
               <div>
                 <label htmlFor="start">Start Time: </label>
-                <input name="start" type="time" value={this.props.eventData.start}/>
+                <input name="start" type="time" value={this.props.eventData.start} onChange={this.props.changeEventStart}/>
               </div>
               <div>
                 <label htmlFor="end">End Time: </label>
-                <input name="end" type="time" value={this.props.eventData.end}/>
+                <input name="end" type="time" value={this.props.eventData.end} onChange={this.props.changeEventEnd}/>
               </div>
               <div>
                 <label htmlFor="allDay">All Day</label>

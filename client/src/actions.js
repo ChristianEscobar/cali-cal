@@ -9,6 +9,9 @@ export const actionNames = {
   setInitial: 'INITIAL_STATE',
   addEvent: 'ADD_EVENT',
   editEvent: "EDIT_EVENT",
+  changeEvent: "CHANGE_EVENT",
+  changeEventStart: "CHANGE_EVENT_START",
+  changeEventEnd: "CHANGE_EVENT_END",
 };
 
 export const editEvent = (event, start, end) => ({
@@ -28,6 +31,27 @@ export const addEvent = () => ({
     event: "",
     start: "",
     end: "",
+  }
+});
+
+export const changeEvent = (event) => ({
+  type: actionNames.changeEvent,
+  payload: {
+    event,
+  }
+});
+
+export const changeEventStart = (eventStart) => ({
+  type: actionNames.changeEventStart,
+  payload: {
+    eventStart,
+  }
+});
+
+export const changeEventEnd = (eventEnd) => ({
+  type: actionNames.changeEventEnd,
+  payload: {
+    eventEnd,
   }
 });
 

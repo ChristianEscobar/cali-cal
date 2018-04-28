@@ -122,6 +122,24 @@ const reducer = (state = initialState, action) => {
           eventEnd: action.payload.end,
         }
       );
+    case actionNames.changeEvent:
+      return Object.assign(
+        {},
+        state,
+        { event: action.payload.event,}
+    );
+    case actionNames.changeEventStart:
+      return Object.assign(
+        {},
+        state,
+        { eventStart: action.payload.eventStart,}
+    );
+    case actionNames.changeEventEnd:
+      return Object.assign(
+        {},
+        state,
+        { eventEnd: action.payload.eventEnd,}
+    );
     default:
       return state;
   }
