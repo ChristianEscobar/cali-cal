@@ -11,3 +11,5 @@ export const getDayAndCounts = (state) =>
 
 
 export const getTodaysEvents = (state) => state.currentDay === null ? [] : state.days[state.selectedDay];
+
+export const getCurrentTask = (state) => state.currentTask;

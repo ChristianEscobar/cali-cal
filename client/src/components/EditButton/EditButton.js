@@ -7,7 +7,7 @@ export default class EditButton extends React.Component{
         return(
           <Link to="/calendar/edit">
             <button className='edit-btn' onClick={this.props.saveCal}>
-                <i className="fa fa-edit" aria-hidden="true"></i>
+                <i className="fa fa-edit fa-lg" aria-hidden="true"></i>
             </button>
           </Link>
         );

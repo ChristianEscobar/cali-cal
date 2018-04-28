@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 
 const mapStateToDispatch = (dispatch) => ({
   changeDay: (day) => dispatch(actions.changeDateAction(day)),
-  saveCal: ()=> dispatch(actions.saveCal)
+  loadInitState: ()=> dispatch(actions.loadInitState)
 });
 
 // const mapDispatchToProps = (dispatch) => ({

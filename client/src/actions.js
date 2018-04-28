@@ -22,9 +22,19 @@ export const requestStarted = {
 };
 
 
+
 export const saveCal = (dispatch) => {
+    dispatch(requestStarted);
+    setTimeout(()=>{
+        dispatch({
+            type: actionNames.requestComplete,
+        });
+    },1000);
+  };
+
+export const loadInitState = (dispatch) => {
+  
   const loadTasks = (tasks) => {
-    
     const newDays = {0:[],1:[],2:[],3:[],4:[],5:[],6:[]};
     for(var i=0; i < tasks.length; i++){
       switch (tasks[i].dayID){
@@ -57,7 +67,6 @@ export const saveCal = (dispatch) => {
     return newDays;
   }
 
-  
   // dispatch(requestStarted);
   fetch('/api/tasks/')
       .then(function(response) {
@@ -74,15 +83,42 @@ export const saveCal = (dispatch) => {
         });
       })
       .catch((error)=>console.log(error));
-  
-  // dispatch(requestStarted);
-  // setTimeout(() => {
-  //   dispatch({
-  //     type: actionNames.requestComplete,
-  //   });
-  // }, 1000);
-  // dispatch(makeRequest({ theSecret: 42 }));
 };
+
+export const updateTask = (data) => {
+  // dispatch(requestStarted);
+  //  let taskId = state.currentTask;
+  // console.log('********task id:', taskId);
+  // let data = {
+  //   event:"New event from react",
+  //   startTime: "09:00:00",
+  //   endTime: "10:00:00",
+  //   dayID: 0
+  // };
+  // let data=this.data;
+  // console.log("this is body *********",data);
+  fetch('/api/tasks/2/', {
+    method: "PUT",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json"
+    },
+    credentials: "same-origin"
+  })
+  .then(function(response) {
+    if(response.status >= 400){
+      throw new Error ("bad request")
+    }
+     return response.json();
+  }) 
+  .then(function(dispatch) {
+    dispatch({
+      type: actionNames.requestComplete,
+    });
+  })
+  // .catch((error)=>console.log(error));
+};
+
 
 export function makeRequest (requestBody) {
   return function (dispatch) {
