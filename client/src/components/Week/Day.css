@@ -5,6 +5,10 @@
   display: inline;
 }
 
+.day-container:after {
+
+}
+
 .events-container {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
@@ -19,4 +23,3 @@
 .events-container-selected {
   background-color: lightgray;
 }
-

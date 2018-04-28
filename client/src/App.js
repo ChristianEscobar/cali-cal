@@ -17,10 +17,13 @@ class App extends Component {
           
         </div>
         <div className='container'>
-          <div className='row'>
+          <div className='col-md-12'>
             <Week />
           </div>
-          <div className='row'>
+        </div>
+        <br />
+        <div className='container'>
+          <div className='col-md-12'>
             <Task />
             <div className='add-event-btn'>
               <Link to="/calendar/edit">
