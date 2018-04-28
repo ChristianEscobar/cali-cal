@@ -86,6 +86,7 @@ export const loadInitState = (dispatch) => {
 };
 
 export const updateTask = (data) => {
+  console.log(data);
   // dispatch(requestStarted);
   //  let taskId = state.currentTask;
   // console.log('********task id:', taskId);
@@ -106,15 +107,18 @@ export const updateTask = (data) => {
     credentials: "same-origin"
   })
   .then(function(response) {
+    console.log("after db",response);
     if(response.status >= 400){
       throw new Error ("bad request")
     }
-     return response.json();
+    
+     return response;
   }) 
-  .then(function(dispatch) {
-    dispatch({
-      type: actionNames.requestComplete,
-    });
+  .then(function(tasks) {
+    // console.log("from dispatch",dispatch);
+    // dispatch({
+    //   type: actionNames.requestComplete,
+    // });
   })
   // .catch((error)=>console.log(error));
 };
