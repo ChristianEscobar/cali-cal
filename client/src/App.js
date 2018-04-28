@@ -15,7 +15,6 @@ class App extends Component {
         <div>
           <Header />
           
-          {/* <OauthLogout /> */}
         </div>
         <div className='container'>
           <div className='row'>

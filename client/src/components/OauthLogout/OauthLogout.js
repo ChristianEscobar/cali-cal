@@ -3,14 +3,14 @@ import React from 'react';
 import { GoogleLogout } from 'react-google-login';
  
  
-const responseGoogle = (response) => {
-  console.log(response);
+const logout = (response) => {
+  console.log("logged out");
 }
 
 export default () => (
   <GoogleLogout
       buttonText="Logout"
+      // onClick={GoogleAuth.signOut()}
       onLogoutSuccess={logout}
-    >
-  </GoogleLogout>
+  />
 )
