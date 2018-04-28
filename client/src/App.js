@@ -14,8 +14,10 @@ class App extends Component {
     return (
       <div>
         <div>
-          <Header />
-          <OauthLogin />
+          <Header>
+            {/* <OauthLogin /> */}
+          </Header>
+          
           {/* <OauthLogout /> */}
         </div>
         <div className='container'>
