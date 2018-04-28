@@ -5,9 +5,8 @@ import Header from './components/Header';
 import Week from './components/Week/WeekContainer';
 // import OauthLogout from './components/OauthLogout';
 // import { Router, Link } from 'react-router-dom';
-import { Router, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import AddEventButton from './components/AddEventButton/AddEventButtonContainer';
-import UpdateButton from './components/UpdateButton/UpdateButtonContainer';
 
 class App extends Component {
   render() {
@@ -29,7 +28,6 @@ class App extends Component {
                 <AddEventButton />
                 
               </Link>
-              <UpdateButton />
             </div>
           </div>
         </div>  

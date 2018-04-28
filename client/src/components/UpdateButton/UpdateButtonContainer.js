@@ -4,10 +4,11 @@ import UpdateButton from './UpdateButton';
 import * as selectors from '../../selectors';
 
 const mapStateToProps = (state) => ({
-    taskId: selectors.getCurrentTask,
+    taskId: selectors.getCurrentTask(state),
+    newEvent: selectors.getSelectedEvent(state),
   });
 const mapDispatchToProps = (dispatch) => ({
-    updateTask: (body)=> dispatch(actions.updateTask(body)),
+    updateTask: (event)=> dispatch(actions.updateTask(event)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UpdateButton);

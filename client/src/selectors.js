@@ -12,7 +12,8 @@ export const getDayAndCounts = (state) =>
 
 // export const getTodaysEvents = (state) => state.currentDay === null ? [] : state.days[state.selectedDay];
 
-// export const getCurrentTask = (state) => state.currentTask;
+export const getCurrentTask = (state) => state.currentTask;
+// export const getTodaysEvents = (state) => state.reducer.currentDay === null ? [] : state.reducer.days[state.reducer.selectedDay];
 export const getTodaysEvents = (state) => state.reducer.currentDay === null ? [] : state.reducer.days[state.reducer.selectedDay];
 
 export const getSelectedEvent = (state) => {
@@ -20,6 +21,8 @@ export const getSelectedEvent = (state) => {
     event: state.reducer.event,
     start: state.reducer.eventStart,
     end: state.reducer.eventEnd,
+    dayId: state.reducer.selectedDay,
+    taskId: state.reducer.currentTask,
   }
 }
 

@@ -14,13 +14,14 @@ export const actionNames = {
   changeEventEnd: "CHANGE_EVENT_END",
 };
 
-export const editEvent = (event, start, end) => ({
+export const editEvent = (id,event, start, end) => ({
   type: actionNames.editEvent,
   payload: {
     editEvent: true,
-    event,
-    start,
-    end,
+    id:id,
+    event:event,
+    start:start,
+    end:end,
   },
 });
 
@@ -130,41 +131,36 @@ export const loadInitState = (dispatch) => {
 };
 
 export const updateTask = (data) => {
-  console.log(data);
+  // alert("new event ****: ",JSON.stringify(data));
   // dispatch(requestStarted);
   //  let taskId = state.currentTask;
   // console.log('********task id:', taskId);
-  // let data = {
-  //   event:"New event from react",
-  //   startTime: "09:00:00",
-  //   endTime: "10:00:00",
-  //   dayID: 0
-  // };
-  // let data=this.data;
-  // console.log("this is body *********",data);
-  fetch('/api/tasks/2/', {
+  let newdata = {
+    event:data.event,
+    startTime: data.start,
+    endTime: data.end,
+    dayID: data.dayId,
+  };
+ 
+
+  fetch('/api/tasks/'+ data.taskId, {
     method: "PUT",
-    body: JSON.stringify(data),
+    body: JSON.stringify(newdata),
     headers: {
       "Content-Type": "application/json"
     },
     credentials: "same-origin"
   })
   .then(function(response) {
-    console.log("after db",response);
     if(response.status >= 400){
       throw new Error ("bad request")
     }
-    
-     return response;
+     return response();
   }) 
   .then(function(tasks) {
-    // console.log("from dispatch",dispatch);
-    // dispatch({
-    //   type: actionNames.requestComplete,
-    // });
+    console.log("some log: ",tasks);
   })
-  // .catch((error)=>console.log(error));
+  .catch((error)=>console.log(error));
 };
 
 

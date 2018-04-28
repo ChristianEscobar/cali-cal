@@ -58,7 +58,7 @@ export const initialState = {
   eventStart: "",
   eventEnd: "",
   savingStateStatus: 'unknown',
-  currentTask:2,
+  currentTask:0,
   editEvent: false,
 };
 
@@ -99,6 +99,7 @@ const reducer = (state = initialState, action) => {
         {},
         state,
         { editEvent: action.payload.editEvent,
+          currentTask:action.payload.id,
           event: action.payload.event,
           eventStart: action.payload.start,
           eventEnd: action.payload.end,
