@@ -16,9 +16,6 @@ import Root from './components/Root';
 import { routerMiddleware } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 
-// react-form stuff
-import { reducer as formReducer } from 'redux-form';
-
 const history = createHistory();
 
 const enhancers = [];
@@ -36,7 +33,6 @@ const composedEnhancers = compose(
 // combine reducers
 const rootReducer = combineReducers({
   reducer,
-  form: formReducer
 });
 
 //const store = createStore(reducer, composedEnhancers);
