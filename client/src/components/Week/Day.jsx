@@ -10,7 +10,9 @@ export default class Day extends Component {
 
     return (
       <div className="day-container col-sm-12 col-lg-1">
-        <span className="dayOfWeek">{this.props.dayName}</span>
+        <div className='day text-center'>
+          <span className="dayOfWeek">{this.props.dayName}</span>
+        </div>
         <div className={className} onClick={() => this.props.changeDay(this.props.dayNumber)}>
           <Notification message={this.props.eventCount} />
         </div>
