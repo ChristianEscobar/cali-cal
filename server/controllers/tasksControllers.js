@@ -4,6 +4,7 @@ var Task = db.task;
 
 // Defining methods for the booksController
 module.exports = {
+<<<<<<< HEAD
   findAll: function(req, res) {
     Task.findAll()
       .then(function(tasks){
@@ -12,6 +13,18 @@ module.exports = {
   },
   findByDayId: function(req, res){
     Task.findAll({
+=======
+    //get all tasks
+    findAll: function(req, res) {
+        Task.findAll().
+            then(function(tasks){
+                res.send(tasks)
+        }); 
+    },
+    //get tasks by day
+    findByDayId: function(req, res){
+        Task.findAll({
+>>>>>>> 619b3557d8ca86aebc3471eaa36565c858331dd3
         where:{
             dayID:req.params.id
         }
@@ -19,14 +32,16 @@ module.exports = {
     .then(function(tasks){
         res.send(tasks)
     })
-  },
-  remove: function(req, res) {
+    },
+    //delete a task
+    remove: function(req, res) {
     Task.destroy({
         where:{
             id:req.params.id
         }
     })
     .then(() => res.send("Task deleted!"))
+<<<<<<< HEAD
   },
   create: function(req, res) {
     console.log("in add", req.body);
@@ -40,6 +55,17 @@ module.exports = {
   }
 
   
+=======
+    },
+    //update a task by id
+    update: function(req, res) {
+        Task.update(req.body,{
+            where:{
+                id: req.params.id
+            }
+        }).then(task => res.status(200).end())
+    },
+>>>>>>> 619b3557d8ca86aebc3471eaa36565c858331dd3
 //   findById: function(req, res) {
 //     db.Book
 //       .findById(req.params.id)

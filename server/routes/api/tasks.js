@@ -11,7 +11,7 @@ router.route("/")
 router.route("/:id")
 //   .get(booksController.findById)
     .get(tasksController.findByDayId)
-//   .put(booksController.update)
+    .put(tasksController.update)
 //   .delete(booksController.remove);
     .delete(tasksController.remove)
 
