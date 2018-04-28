@@ -106,7 +106,17 @@ const reducer = (state = initialState, action) => {
       return Object.assign(
         {},
         state,
-        { editEvent: true,
+        { editEvent: action.payload.editEvent,
+          event: action.payload.event,
+          eventStart: action.payload.start,
+          eventEnd: action.payload.end,
+        }
+      );
+    case actionNames.addEvent:
+      return Object.assign(
+        {},
+        state,
+        { editEvent: action.payload.editEvent,
           event: action.payload.event,
           eventStart: action.payload.start,
           eventEnd: action.payload.end,

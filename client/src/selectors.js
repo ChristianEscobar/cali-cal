@@ -15,7 +15,7 @@ export const getTodaysEvents = (state) => state.reducer.currentDay === null ? []
 export const getSelectedEvent = (state) => {
   return {
     event: state.reducer.event,
-    start: state.reducer.start,
-    end: state.reducer.end,
+    start: state.reducer.eventStart,
+    end: state.reducer.eventEnd,
   }
 }
