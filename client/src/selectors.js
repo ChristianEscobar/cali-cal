@@ -19,3 +19,9 @@ export const getSelectedEvent = (state) => {
     end: state.reducer.eventEnd,
   }
 }
+
+export const getEdit = (state) => {
+  return {
+    editEvent: state.reducer.editEvent,
+  }
+}
