@@ -32,7 +32,7 @@ export default class EventForm extends Component {
               <Link to="/">
                 <button type="button">Cancel</button>
               </Link>
-              <button type="submit">Submit</button>
+              <button type="button" onClick={() => console.log(this.props.editing, this.props.selectedDay)}>Submit</button>
             </form>
           </div>
           <div className="row">

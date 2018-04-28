@@ -5,7 +5,8 @@ import EventForm from './EventForm';
 
 const mapStateToProps = (state) => ({
   eventData: selectors.getSelectedEvent(state),
-
+  selectedDay: selectors.getSelectedDay(state),
+  editing: selectors.getEditValue(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

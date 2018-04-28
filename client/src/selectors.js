@@ -20,8 +20,14 @@ export const getSelectedEvent = (state) => {
   }
 }
 
-export const getEdit = (state) => {
+export const getEditValue = (state) => {
   return {
     editEvent: state.reducer.editEvent,
+  }
+}
+
+export const getSelectedDay = (state) => {
+  return {
+    selectedDay: state.reducer.selectedDay,
   }
 }
