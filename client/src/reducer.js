@@ -54,8 +54,12 @@ export const initialState = {
     6: [],
   },
   selectedDay: 0,
+  event: "",
+  eventStart: "",
+  eventEnd: "",
   savingStateStatus: 'unknown',
   currentTask:2,
+  editEvent: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -90,6 +94,44 @@ const reducer = (state = initialState, action) => {
         state,
         { days: action.days, savingStateStatus:"calendar days loaded" }
       );
+    case actionNames.editEvent:
+      return Object.assign(
+        {},
+        state,
+        { editEvent: action.payload.editEvent,
+          event: action.payload.event,
+          eventStart: action.payload.start,
+          eventEnd: action.payload.end,
+        }
+      );
+    case actionNames.addEvent:
+      return Object.assign(
+        {},
+        state,
+        { editEvent: action.payload.editEvent,
+          event: action.payload.event,
+          eventStart: action.payload.start,
+          eventEnd: action.payload.end,
+        }
+      );
+    case actionNames.changeEvent:
+      return Object.assign(
+        {},
+        state,
+        { event: action.payload.event,}
+    );
+    case actionNames.changeEventStart:
+      return Object.assign(
+        {},
+        state,
+        { eventStart: action.payload.eventStart,}
+    );
+    case actionNames.changeEventEnd:
+      return Object.assign(
+        {},
+        state,
+        { eventEnd: action.payload.eventEnd,}
+    );
     default:
       return state;
   }
