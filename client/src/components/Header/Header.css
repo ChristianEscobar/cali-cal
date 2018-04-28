@@ -1,6 +1,5 @@
 .header {
   height: 100px;
-  width: 9000px;
   background-color: lightgoldenrodyellow;
   padding: 20px 0 0 20px;
   margin-bottom: 25px;
@@ -8,4 +7,5 @@
 
 a {
   font-size: 24px;
+  color: black;
 }
