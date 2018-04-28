@@ -4,8 +4,8 @@ import './index.css';
 // import App from './App';
 
 // redux stuff
-// import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import reducer from './reducer';
 import logger from 'redux-logger';
@@ -30,7 +30,13 @@ const composedEnhancers = compose(
   ...enhancers
 )
 
-const store = createStore(reducer, composedEnhancers);
+// combine reducers
+const rootReducer = combineReducers({
+  reducer,
+});
+
+//const store = createStore(reducer, composedEnhancers);
+const store = createStore(rootReducer, composedEnhancers);
 
 ReactDOM.render(
   <Root store={store} />,
