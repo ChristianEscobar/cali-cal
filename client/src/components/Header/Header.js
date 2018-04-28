@@ -1,6 +1,7 @@
 import React from 'react';
 import './Header.css';
 import OauthLogin from '../OauthLogin';
+import { Link } from 'react-router-dom';
 
 export default class Header extends React.Component {
   render() {
@@ -8,10 +9,10 @@ export default class Header extends React.Component {
       <div className="header">
         <div>
           <div className="col-xs-6 col-sm-4">
-            <a href="">
+            <Link to="/">
               <i className="fa fa-calendar" aria-hidden="true"></i>
               Calendar
-            </a>
+              </Link>
           </div>
           <div className="col-sm-5" />
           <div className="col-xs-6 col-sm-3">
