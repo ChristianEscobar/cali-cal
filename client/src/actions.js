@@ -7,7 +7,29 @@ export const actionNames = {
   requestComplete: 'REQUEST_COMPLETE',
   requestError: 'REQUEST_ERROR',
   setInitial: 'INITIAL_STATE',
+  addEvent: 'ADD_EVENT',
+  editEvent: "EDIT_EVENT",
 };
+
+export const editEvent = (event, start, end) => ({
+  type: actionNames.editEvent,
+  payload: {
+    editEvent: true,
+    event,
+    start,
+    end,
+  },
+});
+
+export const addEvent = () => ({
+  type: actionNames.addEvent,
+  payload: {
+    editEvent: false,
+    event: "",
+    start: "",
+    end: "",
+  }
+});
 
 export const changeDateAction = (day) => ({
   type: actionNames.changeDate,
@@ -20,7 +42,6 @@ export const changeDateAction = (day) => ({
 export const requestStarted = {
   type: actionNames.requestStarted,
 };
-
 
 export const saveCal = (dispatch) => {
   const loadTasks = (tasks) => {
