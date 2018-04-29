@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Task from '../Task/TaskContainer';
 import Header from '../Header/Header';
+import UpdateButton from '../UpdateButton/UpdateButtonContainer';
 
 export default class EventForm extends Component {
   render() {
@@ -32,7 +33,12 @@ export default class EventForm extends Component {
               <Link to="/">
                 <button type="button">Cancel</button>
               </Link>
+<<<<<<< HEAD
               <button type="button" onClick={() => console.log(this.props.editing, this.props.selectedDay)}>Submit</button>
+=======
+              <UpdateButton />
+              {/* <button type="submit">Submit</button> */}
+>>>>>>> c929ae9a34fe1b1fa8c239ac17669469ff57425c
             </form>
           </div>
           <div className="row">

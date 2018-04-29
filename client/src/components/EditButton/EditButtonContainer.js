@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    editEvent: (event, start, end) => dispatch(actions.editEvent(event, start, end)),
+    editEvent: (id, event, start, end) => dispatch(actions.editEvent(id, event, start, end)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditButton);
