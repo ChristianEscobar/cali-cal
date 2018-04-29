@@ -16,7 +16,7 @@ export default class Header extends React.Component {
             </Link>
           </div>
         <div className="col-sm-5" />
-        <div className="col-xs-6 col-sm-3 login">
+        <div className="col-xs-6 col-sm-3 login fixed-bottom">
           <OauthLogin />
           {/* <br /> <br />
           <OauthLogout /> */}
