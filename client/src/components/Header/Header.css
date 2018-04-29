@@ -1,6 +1,7 @@
 .header {
   height: 100px;
-  background-color: lightgoldenrodyellow;
+  /* background-color: lightgoldenrodyellow; */
+  background-image: linear-gradient(to top, #feada6 0%, #f5efef 100%);
   padding: 20px 0 0 20px;
   margin-bottom: 25px;
 }
