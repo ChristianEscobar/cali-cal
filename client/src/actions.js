@@ -9,19 +9,19 @@ export const actionNames = {
   setInitial: 'INITIAL_STATE',
   addEvent: 'ADD_EVENT',
   editEvent: "EDIT_EVENT",
-  changeEvent: "CHANGE_EVENT",
-  changeEventStart: "CHANGE_EVENT_START",
-  changeEventEnd: "CHANGE_EVENT_END",
+  changeEventDetails: "CHANGE_EVENT_DETAILS",
+  formErrors: "SET_FORM_ERRORS",
 };
 
-export const editEvent = (id,event, start, end) => ({
+export const editEvent = (id, event, start, end) => ({
   type: actionNames.editEvent,
   payload: {
     editEvent: true,
-    id:id,
-    event:event,
-    start:start,
-    end:end,
+    id: id,
+    eventDetails: { event,
+                start,
+                end,
+    },
   },
 });
 
@@ -29,30 +29,17 @@ export const addEvent = () => ({
   type: actionNames.addEvent,
   payload: {
     editEvent: false,
-    event: "",
-    start: "",
-    end: "",
+    eventDetails: { event: "",
+                  start: "",
+                  end: "",
+    },
   }
 });
 
-export const changeEvent = (event) => ({
-  type: actionNames.changeEvent,
+export const changeEventDetails = (eventDetails) => ({
+  type: actionNames.changeEventDetails,
   payload: {
-    event,
-  }
-});
-
-export const changeEventStart = (eventStart) => ({
-  type: actionNames.changeEventStart,
-  payload: {
-    eventStart,
-  }
-});
-
-export const changeEventEnd = (eventEnd) => ({
-  type: actionNames.changeEventEnd,
-  payload: {
-    eventEnd,
+    eventDetails,
   }
 });
 
@@ -163,6 +150,10 @@ export const updateTask = (data) => {
   .catch((error)=>console.log(error));
 };
 
+export const saveTask = (data) => {
+  console.log("In saveTask");
+};
+
 
 export function makeRequest (requestBody) {
   return function (dispatch) {
@@ -182,6 +173,13 @@ export function makeRequest (requestBody) {
       // });
   }
 }
+
+export const setFormErrors = (formErrors) => ({
+  type: actionNames.formErrors,
+  payload: {
+    formErrors,
+  }
+});
 
 /*
 export function saveEvent(edit, requestBody) {

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default class EditButton extends React.Component{
     render(){
+      console.log(this.props);
         return(
           <Link to="/calendar/edit">
             <button className='edit-btn' onClick={() => this.props.editEvent(this.props.taskId, this.props.event, this.props.start, this.props.end)}>

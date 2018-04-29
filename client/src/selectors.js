@@ -18,9 +18,7 @@ export const getTodaysEvents = (state) => state.reducer.currentDay === null ? []
 
 export const getSelectedEvent = (state) => {
   return {
-    event: state.reducer.event,
-    start: state.reducer.eventStart,
-    end: state.reducer.eventEnd,
+    eventDetails: state.reducer.eventDetails,
     dayId: state.reducer.selectedDay,
     taskId: state.reducer.currentTask,
   }
@@ -36,4 +34,10 @@ export const getSelectedDay = (state) => {
   return {
     selectedDay: state.reducer.selectedDay,
   }
+}
+
+export const getFormErrors = (state) => {
+  return {
+    errors: state.reducer.formErrors,
+  } 
 }

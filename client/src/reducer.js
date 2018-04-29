@@ -54,12 +54,15 @@ export const initialState = {
     6: [],
   },
   selectedDay: 0,
-  event: "",
-  eventStart: "",
-  eventEnd: "",
+  eventDetails: {
+    event: "",
+    start: "",
+    end: "",
+  },
   savingStateStatus: 'unknown',
   currentTask:0,
   editEvent: false,
+  formErrors: {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -100,9 +103,7 @@ const reducer = (state = initialState, action) => {
         state,
         { editEvent: action.payload.editEvent,
           currentTask:action.payload.id,
-          event: action.payload.event,
-          eventStart: action.payload.start,
-          eventEnd: action.payload.end,
+          eventDetails: action.payload.eventDetails,
         }
       );
     case actionNames.addEvent:
@@ -115,23 +116,17 @@ const reducer = (state = initialState, action) => {
           eventEnd: action.payload.end,
         }
       );
-    case actionNames.changeEvent:
+    case actionNames.changeEventDetails:
       return Object.assign(
         {},
         state,
-        { event: action.payload.event,}
+        { eventDetails: action.payload.eventDetails,}
     );
-    case actionNames.changeEventStart:
+    case actionNames.formErrors:
       return Object.assign(
         {},
         state,
-        { eventStart: action.payload.eventStart,}
-    );
-    case actionNames.changeEventEnd:
-      return Object.assign(
-        {},
-        state,
-        { eventEnd: action.payload.eventEnd,}
+        { formErrors: action.payload.formErrors,}
     );
     default:
       return state;

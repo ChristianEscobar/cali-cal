@@ -4,15 +4,15 @@ import * as actions from '../../actions';
 import EventForm from './EventForm';
 
 const mapStateToProps = (state) => ({
-  eventData: selectors.getSelectedEvent(state),
+  event: selectors.getSelectedEvent(state),
   selectedDay: selectors.getSelectedDay(state),
   editing: selectors.getEditValue(state),
+  formErrors: selectors.getFormErrors(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  changeEvent: (event) => dispatch(actions.changeEvent(event.target.value)),
-  changeEventStart: (event) => dispatch(actions.changeEventStart(event.target.value)),
-  changeEventEnd: (event) => dispatch(actions.changeEventEnd(event.target.value)),
+  changeEventDetails: (newEventDetails) => dispatch(actions.changeEventDetails(newEventDetails)),
+  setFormErrors: (errors) => dispatch(actions.setFormErrors(errors)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventForm);
