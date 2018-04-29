@@ -2,6 +2,9 @@ import React from 'react';
 import './Task.css';
 import DeleteButton from '../DeleteButton/DeleteButtonContainer'
 import EditButton from '../EditButton/EditButtonContainer'
+import AddEventButton from '../AddEventButton/AddEventButtonContainer';
+import { Link } from 'react-router-dom';
+
 export default class Task extends React.Component {
   render() {
     const styles= {
@@ -17,6 +20,11 @@ export default class Task extends React.Component {
                     
           <button  className="list-group-item disabled">
             Tasks
+            <div className='add-event-btn'>
+              <Link to="/calendar/edit">
+                <AddEventButton />
+              </Link>
+            </div>
           </button>
           <ul className="list-group">
             {this.props.events.map( event => 
@@ -25,8 +33,8 @@ export default class Task extends React.Component {
                 className="list-group-item" 
                 number={this.props.events.length}
               >
-                <span className='item'>
-                  {event.startTime} <strong>{event.event}</strong>
+                <span className='item time-list'>
+                  {event.startTime} <strong className="task-name-list">{event.event}</strong>
                 </span>
               
                 <DeleteButton />  
@@ -47,6 +55,11 @@ export default class Task extends React.Component {
         <div className='list-group' style={styles.container}>
           <button  className="list-group-item disabled">
             Tasks
+            <div className='add-event-btn'>
+              <Link to="/calendar/edit">
+                <AddEventButton />
+              </Link>
+            </div>
           </button>
 
           <button href=" " className='list-group-item '>
