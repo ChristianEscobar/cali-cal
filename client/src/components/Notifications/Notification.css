@@ -55,9 +55,9 @@ ul.dots li {
   width: 100%;
   padding: 10px 0 ;  
 }
-ul.dots li:hover {
+/* ul.dots li:hover {
   background: #2c3e50;
-}
+} */
 ul.dots li span {
   display: block;
   -webkit-border-radius: 30px;
@@ -67,11 +67,11 @@ ul.dots li span {
 /*   -webkit-box-shadow: 1px 1px 5px #808080; */
 /*   -moz-box-shadow: 1px 1px 5px #808080; */
 /*   box-shadow: 1px 1px 5px #808080;   */
-  padding: 10px;
+  /* padding: 10px; */
   width: 30px;
   height: 30px;
-  margin: 0 auto;
-  line-height: 30px;
+  margin-top: 15px;
+  line-height: 2px;
   text-align: center;
   position: relative;
 }
@@ -123,27 +123,27 @@ ul.dots > li > span > mark {
 -webkit-animation-iteration-count: 1;
         animation-iteration-count: 1;  
 }
-ul.dots > li:hover > span > mark {
+.events-container > ul.dots > li:hover > span > mark {
   -webkit-animation-name: bounce;
           animation-name: bounce;
 }
-ul.dots > li:hover > span > mark.rubberBand {
+.events-container > ul.dots > li:hover > span > mark.rubberBand {
   -webkit-animation-name: rubberBand;
           animation-name: rubberBand;
 }
 
-ul.dots > li:hover > span > mark.swing {
+.events-container > ul.dots > li:hover > span > mark.swing {
   -webkit-transform-origin: top center;
       -ms-transform-origin: top center;
           transform-origin: top center;
   -webkit-animation-name: swing;
           animation-name: swing;
 }
-ul.dots > li:hover > span > mark.tada {
+.events-container > ul.dots > li:hover > span > mark.tada {
   -webkit-animation-name: tada;
           animation-name: tada;
 }
-ul.dots > li:hover > span > mark.wobble {
+.events-container > ul.dots > li:hover > span > mark.wobble {
   -webkit-animation-name: wobble;
           animation-name: wobble;
 }
