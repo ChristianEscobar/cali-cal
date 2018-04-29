@@ -8,22 +8,22 @@ export default class Header extends React.Component {
   render() {
     
     return (
-      <div className="header">
+      <header>
         <div>
-          <div className="col-xs-6 col-sm-4">
+          <div className="col-xs-6 col-sm-4 calendar-logo">
             <Link to="/">
               <i className="fa fa-calendar" aria-hidden="true"></i>
               Calendar
               </Link>
           </div>
           <div className="col-sm-5" />
-          <div className="col-xs-6 col-sm-3">
+          <div className="col-xs-6 col-sm-3 login">
             <OauthLogin />
             {/* <br /> <br />
             <OauthLogout /> */}
           </div>
         </div>
-      </div>
+      </header>
     )
   };
 };
