@@ -18,7 +18,7 @@ export default class Task extends React.Component {
       return (
         <div className="list-overflow-container" style={styles.container}>
                     
-          <button  className="list-group-item disabled">
+          <button  className="list-group-item panel-default">
             Tasks
             <div className='add-event-btn'>
               <Link to="/calendar/edit">
