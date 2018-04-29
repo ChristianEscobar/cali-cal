@@ -14,13 +14,14 @@ export const actionNames = {
   changeEventEnd: "CHANGE_EVENT_END",
 };
 
-export const editEvent = (event, start, end) => ({
+export const editEvent = (id,event, start, end) => ({
   type: actionNames.editEvent,
   payload: {
     editEvent: true,
-    event,
-    start,
-    end,
+    id:id,
+    event:event,
+    start:start,
+    end:end,
   },
 });
 
@@ -68,8 +69,17 @@ export const requestStarted = {
 };
 
 export const saveCal = (dispatch) => {
+    dispatch(requestStarted);
+    setTimeout(()=>{
+        dispatch({
+            type: actionNames.requestComplete,
+        });
+    },1000);
+  };
+
+export const loadInitState = (dispatch) => {
+  
   const loadTasks = (tasks) => {
-    
     const newDays = {0:[],1:[],2:[],3:[],4:[],5:[],6:[]};
     for(var i=0; i < tasks.length; i++){
       switch (tasks[i].dayID){
@@ -102,7 +112,6 @@ export const saveCal = (dispatch) => {
     return newDays;
   }
 
-  
   // dispatch(requestStarted);
   fetch('/api/tasks/')
       .then(function(response) {
@@ -119,15 +128,41 @@ export const saveCal = (dispatch) => {
         });
       })
       .catch((error)=>console.log(error));
-  
-  // dispatch(requestStarted);
-  // setTimeout(() => {
-  //   dispatch({
-  //     type: actionNames.requestComplete,
-  //   });
-  // }, 1000);
-  // dispatch(makeRequest({ theSecret: 42 }));
 };
+
+export const updateTask = (data) => {
+  // alert("new event ****: ",JSON.stringify(data));
+  // dispatch(requestStarted);
+  //  let taskId = state.currentTask;
+  // console.log('********task id:', taskId);
+  let newdata = {
+    event:data.event,
+    startTime: data.start,
+    endTime: data.end,
+    dayID: data.dayId,
+  };
+ 
+
+  fetch('/api/tasks/'+ data.taskId, {
+    method: "PUT",
+    body: JSON.stringify(newdata),
+    headers: {
+      "Content-Type": "application/json"
+    },
+    credentials: "same-origin"
+  })
+  .then(function(response) {
+    if(response.status >= 400){
+      throw new Error ("bad request")
+    }
+     return response();
+  }) 
+  .then(function(tasks) {
+    console.log("some log: ",tasks);
+  })
+  .catch((error)=>console.log(error));
+};
+
 
 export function makeRequest (requestBody) {
   return function (dispatch) {

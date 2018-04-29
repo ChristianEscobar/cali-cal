@@ -33,6 +33,8 @@ module.exports = {
     },
     //update a task by id
     update: function(req, res) {
+        console.log('body: ', req);
+        console.log("id: ", req.params.id);
         Task.update(req.body,{
             where:{
                 id: req.params.id

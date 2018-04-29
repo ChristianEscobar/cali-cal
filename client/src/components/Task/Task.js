@@ -23,7 +23,7 @@ export default class Task extends React.Component {
                                     <li key={event.event} className="list-group-item" 
                                     number={this.props.events.length}>
                                         <span className='item'>{event.startTime} <strong>{event.event}</strong></span>
-                                        <DeleteButton />  <EditButton event={event.event} start={event.startTime} end={event.endTime} />
+                                        <DeleteButton />  <EditButton taskId={event.id} event={event.event} start={event.startTime} end={event.endTime} />
                                                                         
                                     </li>
                             )}
