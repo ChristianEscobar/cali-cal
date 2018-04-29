@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Task from '../Task/TaskContainer';
 import Header from '../Header/Header';
+import UpdateButton from '../UpdateButton/UpdateButtonContainer';
 
 export default class EventForm extends Component {
   render() {
@@ -32,7 +33,8 @@ export default class EventForm extends Component {
               <Link to="/">
                 <button type="button">Cancel</button>
               </Link>
-              <button type="submit">Submit</button>
+              <UpdateButton />
+              {/* <button type="submit">Submit</button> */}
             </form>
           </div>
           <div className="row">

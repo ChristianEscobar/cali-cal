@@ -5,7 +5,7 @@ import { dayID } from '../../utils/helper';
 export default class Week extends Component {
   
   componentWillMount(){
-    this.props.saveCal();
+    this.props.loadInitState();
   }
   render() {
     return (
