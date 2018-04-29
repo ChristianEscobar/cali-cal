@@ -23,3 +23,7 @@ li{
 .delete-btn, .edit-btn {
     background-color: transparent;
 }
+
+.panel-default {
+    font-weight: 450;
+}

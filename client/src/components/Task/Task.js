@@ -61,7 +61,7 @@ export default class Task extends React.Component {
     else {
       return (
         <div className='list-group' style={styles.container}>
-          <button  className="list-group-item disabled">
+          <button  className="list-group-item panel-default">
             Tasks
             <div className='add-event-btn'>
               <Link to="/calendar/edit">
@@ -70,7 +70,7 @@ export default class Task extends React.Component {
             </div>
           </button>
 
-          <button href=" " className='list-group-item '>
+          <button href=" " className='list-group-item'>
             No tasks for today!
           </button>
         </div>
