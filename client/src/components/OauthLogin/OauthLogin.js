@@ -5,6 +5,8 @@ import { GoogleLogin } from 'react-google-login';
  
 const responseGoogle = (response) => {
   console.log(response);
+  console.log(response.profileObj.givenName);
+  console.log(response.profileObj.imageUrl);
 }
 
 export default () => (
@@ -15,13 +17,3 @@ export default () => (
     onFailure={responseGoogle}
   />
 )
-
-// const Logout = () => (
-//   <GoogleLogout
-//       buttonText="Logout"
-//       onLogoutSuccess={logout}
-//     >
-//   </GoogleLogout>
-// )
-
-// export { Login };

@@ -5,8 +5,8 @@ import Header from './components/Header';
 import Week from './components/Week/WeekContainer';
 // import OauthLogout from './components/OauthLogout';
 // import { Router, Link } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import AddEventButton from './components/AddEventButton/AddEventButtonContainer';
+// import { Link } from 'react-router-dom';
+// import AddEventButton from './components/AddEventButton/AddEventButtonContainer';
 
 class App extends Component {
   render() {
@@ -15,20 +15,21 @@ class App extends Component {
         <div>
           <Header />
           
-          {/* <OauthLogout /> */}
         </div>
         <div className='container'>
-          <div className='row'>
+          <div className='col-md-12'>
             <Week />
           </div>
-          <div className='row'>
+        </div>
+        <br />
+        <div className='container'>
+          <div className='col-md-12'>
             <Task />
-            <div className='add-event-btn'>
+            {/* <div className='add-event-btn'>
               <Link to="/calendar/edit">
                 <AddEventButton />
-                
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>  
       </div>

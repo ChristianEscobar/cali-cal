@@ -3,10 +3,11 @@
   height: 150px;
   float: left;
   display: inline;
+  margin: 25px 0;
 }
 
 .events-container {
-  border-top: 1px solid black;
+  border-top: 2px solid black;
   border-bottom: 1px solid black;
   width: 150px;
   height: 150px;
@@ -20,3 +21,7 @@
   background-color: lightgray;
 }
 
+.day {
+  text-align: center;
+  width: 150px;
+}

@@ -3,12 +3,12 @@ import Task from './TaskContainer'
 
 export default class TaskList extends React.Component{
     
-    render(){
+  render(){
         
-        return(
-            <div>
-                <Task />
-            </div>
-        )
-    }
+    return (
+      <div>
+        <Task />
+      </div>
+    )
+  }
 }
