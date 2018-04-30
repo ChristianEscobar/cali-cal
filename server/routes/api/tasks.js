@@ -14,5 +14,6 @@ router.route("/:id")
     .put(tasksController.update)
 //   .delete(booksController.remove);
     .delete(tasksController.remove)
+    .post(tasksController.addEvent)
 
 module.exports = router;

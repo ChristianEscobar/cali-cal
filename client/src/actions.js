@@ -9,19 +9,19 @@ export const actionNames = {
   setInitial: 'INITIAL_STATE',
   addEvent: 'ADD_EVENT',
   editEvent: "EDIT_EVENT",
-  changeEvent: "CHANGE_EVENT",
-  changeEventStart: "CHANGE_EVENT_START",
-  changeEventEnd: "CHANGE_EVENT_END",
+  changeEventDetails: "CHANGE_EVENT_DETAILS",
+  formErrors: "SET_FORM_ERRORS",
 };
 
-export const editEvent = (id,event, start, end) => ({
+export const editEvent = (id, event, start, end) => ({
   type: actionNames.editEvent,
   payload: {
     editEvent: true,
-    id:id,
-    event:event,
-    start:start,
-    end:end,
+    id: id,
+    eventDetails: { event,
+                start,
+                end,
+    },
   },
 });
 
@@ -29,30 +29,17 @@ export const addEvent = () => ({
   type: actionNames.addEvent,
   payload: {
     editEvent: false,
-    event: "",
-    start: "",
-    end: "",
+    eventDetails: { event: "",
+                  start: "",
+                  end: "",
+    },
   }
 });
 
-export const changeEvent = (event) => ({
-  type: actionNames.changeEvent,
+export const changeEventDetails = (eventDetails) => ({
+  type: actionNames.changeEventDetails,
   payload: {
-    event,
-  }
-});
-
-export const changeEventStart = (eventStart) => ({
-  type: actionNames.changeEventStart,
-  payload: {
-    eventStart,
-  }
-});
-
-export const changeEventEnd = (eventEnd) => ({
-  type: actionNames.changeEventEnd,
-  payload: {
-    eventEnd,
+    eventDetails,
   }
 });
 
@@ -136,31 +123,51 @@ export const updateTask = (data) => {
   //  let taskId = state.currentTask;
   // console.log('********task id:', taskId);
   let newdata = {
-    event:data.event,
-    startTime: data.start,
-    endTime: data.end,
+    event:data.eventDetails.event,
+    startTime: data.eventDetails.start,
+    endTime: data.eventDetails.end,
     dayID: data.dayId,
   };
- 
+  
+  return function(dispatch) {
+    fetch('/api/tasks/'+ data.taskId, {
+      method: "PUT",
+      body: JSON.stringify(newdata),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "same-origin"
+    })
+    .then(function(response) {
+      if(response.status >= 400){
+        throw new Error ("bad request")
+      }
+       return response;
+    }) 
+    .then(function(tasks) {
 
-  fetch('/api/tasks/'+ data.taskId, {
-    method: "PUT",
-    body: JSON.stringify(newdata),
-    headers: {
-      "Content-Type": "application/json"
-    },
-    credentials: "same-origin"
-  })
-  .then(function(response) {
-    if(response.status >= 400){
-      throw new Error ("bad request")
-    }
-     return response();
-  }) 
-  .then(function(tasks) {
-    console.log("some log: ",tasks);
-  })
-  .catch((error)=>console.log(error));
+      console.log("some log: ",tasks);
+
+      // Call dispatch to reset selected task to empty
+      let eventDetails = {
+        event: "",
+        start: "",
+        end: "",
+      };
+
+      console.log("action", eventDetails);
+
+      dispatch({
+        type: actionNames.changeEventDetails,
+        payload: { eventDetails },
+      });
+    })
+    .catch((error)=>console.log(error));
+    };
+  }
+
+export const saveTask = (data) => {
+  console.log("In saveTask");
 };
 
 
@@ -182,3 +189,16 @@ export function makeRequest (requestBody) {
       // });
   }
 }
+
+export const setFormErrors = (formErrors) => ({
+  type: actionNames.formErrors,
+  payload: {
+    formErrors,
+  }
+});
+
+/*
+export function saveEvent(edit, requestBody) {
+  const url = (edit) ? "/api/task/:id"
+}
+*/

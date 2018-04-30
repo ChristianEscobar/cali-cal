@@ -8,7 +8,7 @@ const mapStateToProps = (state) => ({
     newEvent: selectors.getSelectedEvent(state),
   });
 const mapDispatchToProps = (dispatch) => ({
-    updateTask: (event)=> dispatch(actions.updateTask(event)),
+  updateTask: (event)=> dispatch(actions.updateTask(event)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UpdateButton);
