@@ -13,33 +13,44 @@ module.exports = {
     },
     //get tasks by day
     findByDayId: function(req, res){
-        Task.findAll({
-        where:{
-            dayID:req.params.id
-        }
+      Task.findAll({
+      where:{
+          dayID:req.params.id
+      }
     })
     .then(function(tasks){
-        res.send(tasks)
+      res.send(tasks)
     })
     },
     //delete a task
     remove: function(req, res) {
     Task.destroy({
-        where:{
-            id:req.params.id
-        }
+      where:{
+          id:req.params.id
+      }
     })
     .then(() => res.send("Task deleted!"))
     },
     //update a task by id
     update: function(req, res) {
-        console.log('body: ', req);
-        console.log("id: ", req.params.id);
-        Task.update(req.body,{
-            where:{
-                id: req.params.id
-            }
-        }).then(task => res.status(200).end())
+      console.log('body: ', req);
+      console.log("id: ", req.params.id);
+      Task.update(req.body,{
+          where:{
+              id: req.params.id
+          }
+      }).then(task => res.status(200).end())
+    },
+    addEvent: function(req, res) {
+      Task.create({
+        userId: 1,
+        event: req.body.event,
+        startTime: req.body.startTime,
+        endTime: req.body.endTime,
+        dayID: req.params.id,
+      })
+      .then(newEvent => res.status(200).json(newEvent))
+      .catch(err => res.status(500).json(err));
     },
 //   findById: function(req, res) {
 //     db.Book
