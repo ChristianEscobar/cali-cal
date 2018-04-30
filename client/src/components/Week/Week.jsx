@@ -7,6 +7,7 @@ export default class Week extends Component {
   componentWillMount(){
     this.props.loadInitState();
   }
+
   render() {
     return (
       <div>

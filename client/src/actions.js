@@ -1,3 +1,4 @@
+
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
@@ -10,6 +11,7 @@ export const actionNames = {
   addEvent: 'ADD_EVENT',
   editEvent: "EDIT_EVENT",
   changeEventDetails: "CHANGE_EVENT_DETAILS",
+  changeSubmitted: "CHANGE_SUBMITTED",
   formErrors: "SET_FORM_ERRORS",
 };
 
@@ -103,9 +105,6 @@ export const loadInitState = (dispatch) => {
   fetch('/api/tasks/')
       .then(function(response) {
           return response.json();
-        // dispatch({
-        //   type: actionNames.setInitial,
-        // })
       }) 
       .then(function(tasks) {
         let days = loadTasks(tasks);
@@ -118,10 +117,7 @@ export const loadInitState = (dispatch) => {
 };
 
 export const updateTask = (data) => {
-  // alert("new event ****: ",JSON.stringify(data));
-  // dispatch(requestStarted);
-  //  let taskId = state.currentTask;
-  // console.log('********task id:', taskId);
+
   let newdata = {
     event:data.eventDetails.event,
     startTime: data.eventDetails.start,
@@ -158,8 +154,9 @@ export const updateTask = (data) => {
       console.log("action", eventDetails);
 
       dispatch({
-        type: actionNames.changeEventDetails,
+        type: actionNames.changeSubmitted,
         payload: { eventDetails },
+        
       });
     })
     .catch((error)=>console.log(error));
