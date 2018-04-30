@@ -116,9 +116,6 @@ export const loadInitState = (dispatch) => {
   fetch('/api/tasks/')
       .then(function(response) {
           return response.json();
-        // dispatch({
-        //   type: actionNames.setInitial,
-        // })
       }) 
       .then(function(tasks) {
         let days = loadTasks(tasks);
@@ -131,10 +128,7 @@ export const loadInitState = (dispatch) => {
 };
 
 export const updateTask = (data) => {
-  // alert("new event ****: ",JSON.stringify(data));
-  // dispatch(requestStarted);
-  //  let taskId = state.currentTask;
-  // console.log('********task id:', taskId);
+
   let newdata = {
     event:data.event,
     startTime: data.start,
@@ -142,7 +136,6 @@ export const updateTask = (data) => {
     dayID: data.dayId,
   };
  
-
   fetch('/api/tasks/'+ data.taskId, {
     method: "PUT",
     body: JSON.stringify(newdata),
@@ -155,10 +148,14 @@ export const updateTask = (data) => {
     if(response.status >= 400){
       throw new Error ("bad request")
     }
-     return response();
+      return response();
   }) 
   .then(function(tasks) {
-    console.log("some log: ",tasks);
+    return (dispatch) => {
+      dispatch({
+        type: actionNames.requestComplete,
+      })
+    }
   })
   .catch((error)=>console.log(error));
 };
