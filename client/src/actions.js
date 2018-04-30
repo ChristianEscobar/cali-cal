@@ -1,3 +1,4 @@
+
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
@@ -10,6 +11,7 @@ export const actionNames = {
   addEvent: 'ADD_EVENT',
   editEvent: "EDIT_EVENT",
   changeEventDetails: "CHANGE_EVENT_DETAILS",
+  changeSubmitted: "CHANGE_SUBMITTED",
   formErrors: "SET_FORM_ERRORS",
 };
 
@@ -152,8 +154,9 @@ export const updateTask = (data) => {
       console.log("action", eventDetails);
 
       dispatch({
-        type: actionNames.changeEventDetails,
+        type: actionNames.changeSubmitted,
         payload: { eventDetails },
+        
       });
     })
     .catch((error)=>console.log(error));

@@ -121,7 +121,18 @@ const reducer = (state = initialState, action) => {
       return Object.assign(
         {},
         state,
-        { eventDetails: action.payload.eventDetails,}
+        { 
+          eventDetails: action.payload.eventDetails,
+        }
+    );
+    case actionNames.changeSubmitted:
+      return Object.assign(
+        {},
+        state,
+        { 
+          eventDetails: action.payload.eventDetails,
+          savingStateStatus:"updated"
+        }
     );
     case actionNames.formErrors:
       return Object.assign(
