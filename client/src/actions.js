@@ -123,32 +123,48 @@ export const updateTask = (data) => {
   //  let taskId = state.currentTask;
   // console.log('********task id:', taskId);
   let newdata = {
-    event:data.event,
-    startTime: data.start,
-    endTime: data.end,
+    event:data.eventDetails.event,
+    startTime: data.eventDetails.start,
+    endTime: data.eventDetails.end,
     dayID: data.dayId,
   };
- 
+  
+  return function(dispatch) {
+    fetch('/api/tasks/'+ data.taskId, {
+      method: "PUT",
+      body: JSON.stringify(newdata),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "same-origin"
+    })
+    .then(function(response) {
+      if(response.status >= 400){
+        throw new Error ("bad request")
+      }
+       return response;
+    }) 
+    .then(function(tasks) {
 
-  fetch('/api/tasks/'+ data.taskId, {
-    method: "PUT",
-    body: JSON.stringify(newdata),
-    headers: {
-      "Content-Type": "application/json"
-    },
-    credentials: "same-origin"
-  })
-  .then(function(response) {
-    if(response.status >= 400){
-      throw new Error ("bad request")
-    }
-     return response();
-  }) 
-  .then(function(tasks) {
-    console.log("some log: ",tasks);
-  })
-  .catch((error)=>console.log(error));
-};
+      console.log("some log: ",tasks);
+
+      // Call dispatch to reset selected task to empty
+      let eventDetails = {
+        event: "",
+        start: "",
+        end: "",
+      };
+
+      console.log("action", eventDetails);
+
+      dispatch({
+        type: actionNames.changeEventDetails,
+        payload: { eventDetails },
+      });
+    })
+    .catch((error)=>console.log(error));
+    };
+  }
 
 export const saveTask = (data) => {
   console.log("In saveTask");

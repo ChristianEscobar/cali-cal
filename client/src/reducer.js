@@ -117,6 +117,7 @@ const reducer = (state = initialState, action) => {
         }
       );
     case actionNames.changeEventDetails:
+      console.log("reducer", action.payload);
       return Object.assign(
         {},
         state,

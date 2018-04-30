@@ -70,10 +70,12 @@ export default class EventForm extends Component {
                 <label htmlFor="allDay">All Day</label>
                 <input name="allDay" type="checkbox"/>
               </div>
-              <Link to="/">
-                <button type="button">Cancel</button>
-              </Link>
-              <UpdateButton />
+              <div>
+                <Link to="/">
+                  <button type="button">Cancel</button>
+                </Link>
+                <UpdateButton />
+              </div>
               {/*<button type="button" onClick={this.handleSubmit}>Submit</button>*/}
             </form>
           </div>
