@@ -1,0 +1,10 @@
+.update-btn {
+  background-color: #f77064;
+  color: white;
+}
+
+.update-btn:hover {
+  background-color: white;
+  border-color: #f77064;
+  color: #f77064;
+}

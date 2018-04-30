@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './AddEventButton.css';
 
 export default class AddEventButton extends Component{
   render() {

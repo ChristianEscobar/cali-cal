@@ -15,3 +15,15 @@
 li{
     line-height: 24px;
 }
+
+.time-list > .col-xs-3 > strong {
+    color: #f77064;
+}
+
+.delete-btn, .edit-btn {
+    background-color: transparent;
+}
+
+.panel-default {
+    font-weight: 450;
+}

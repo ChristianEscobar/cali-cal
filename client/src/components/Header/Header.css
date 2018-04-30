@@ -1,12 +1,47 @@
-.header {
+ /* .header {
   height: 100px;
-  /* background-color: lightgoldenrodyellow; */
-  background-image: linear-gradient(to top, #feada6 0%, #f5efef 100%);
+  background-color: lightgoldenrodyellow;
   padding: 20px 0 0 20px;
-  margin-bottom: 25px;
+  margin-bottom: 25px; */
+  /* /* background-image: linear-gradient(to top, #feada6 0%, #f5efef 100%); */
+/* } */
+
+header > div > a {
+  color: white !important;
 }
 
-a {
-  font-size: 24px;
-  color: black;
+ /* * {
+  margin: 0px;
+  border: 0px; 
+   padding: 0px; 
+   box-sizing: border-box;
+}  */
+
+header {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  background-image: linear-gradient(to top, #f77064 0%, #ffe4e4 100%);
+  transform: skewY(-6deg);
+  transform-origin: top left;
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+/* header * {
+  
+} */
+
+.calendar-logo {
+  margin-top: 70px;
+  padding: 20px 0;
+  font: 44px "Arial";
+  text-align: center;
+  position: relative;
+  color: white;
+  transform: skewY(6deg);
+}
+
+.login {
+  margin-top: 160px;
+  transform: skewY(6deg);
 }
