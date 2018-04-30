@@ -18,14 +18,14 @@ export default class Task extends React.Component {
       return (
         <div className="list-overflow-container" style={styles.container}>
                     
-          <button  className="list-group-item panel-default">
+          <div  className="list-group-item panel-default">
             Tasks
             <div className='add-event-btn'>
               <Link to="/calendar/edit">
                 <AddEventButton />
               </Link>
             </div>
-          </button>
+          </div>
           <ul className="list-group">
             {this.props.events.map( event => 
               <li
