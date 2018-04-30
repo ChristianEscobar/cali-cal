@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Task from '../Task/TaskContainer';
 import Header from '../Header/Header';
 import UpdateButton from '../UpdateButton/UpdateButtonContainer';
+import './EventForm.css';
 
 export default class EventForm extends Component {
   handleSubmit = (e) => {

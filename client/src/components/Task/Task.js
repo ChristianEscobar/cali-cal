@@ -9,7 +9,7 @@ export default class Task extends React.Component {
   render() {
     const styles= {
       container: {
-        width:300,
+        width:400,
         margin:20,
       },
     }
@@ -18,32 +18,40 @@ export default class Task extends React.Component {
       return (
         <div className="list-overflow-container" style={styles.container}>
                     
-          <button  className="list-group-item disabled">
+          <div  className="list-group-item panel-default">
             Tasks
             <div className='add-event-btn'>
               <Link to="/calendar/edit">
                 <AddEventButton />
               </Link>
             </div>
-          </button>
+          </div>
           <ul className="list-group">
             {this.props.events.map( event => 
               <li
                 key={event.event}
-                className="list-group-item" 
+                className="list-group-item col-xs-12" 
                 number={this.props.events.length}
               >
-                <span className='item time-list'>
-                  {event.startTime} <strong className="task-name-list">{event.event}</strong>
-                </span>
-              
-                <DeleteButton />  
-                <EditButton 
-                  taskId={event.id}
-                  event={event.event}
-                  start={event.startTime}
-                  end={event.endTime}
-                />                                                         
+                <div className='item time-list'>
+                  <div className="col-xs-3">
+                    <strong>{event.startTime}</strong> <br />
+                    {event.endTime} 
+                  </div>
+                  <div className="col-xs-5">
+                    <div className="task-name-list">{event.event}</div>
+                  </div>
+                </div>
+
+                <div className="col-xs-4">
+                  <DeleteButton />  
+                  <EditButton 
+                    taskId={event.id}
+                    event={event.event}
+                    start={event.startTime}
+                    end={event.endTime}
+                  />                
+                </div>                                         
               </li>
             )}
           </ul>
@@ -53,7 +61,7 @@ export default class Task extends React.Component {
     else {
       return (
         <div className='list-group' style={styles.container}>
-          <button  className="list-group-item disabled">
+          <button  className="list-group-item panel-default">
             Tasks
             <div className='add-event-btn'>
               <Link to="/calendar/edit">
@@ -62,7 +70,7 @@ export default class Task extends React.Component {
             </div>
           </button>
 
-          <button href=" " className='list-group-item '>
+          <button href=" " className='list-group-item'>
             No tasks for today!
           </button>
         </div>
