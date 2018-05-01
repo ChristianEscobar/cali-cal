@@ -44,7 +44,7 @@ export default class Task extends React.Component {
                 </div>
 
                 <div className="col-xs-4">
-                  <DeleteButton />  
+                  <DeleteButton taskId={event.id}/>  
                   <EditButton 
                     taskId={event.id}
                     event={event.event}

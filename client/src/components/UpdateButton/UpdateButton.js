@@ -4,7 +4,8 @@ import './UpdateButton.css';
 export default class UpdateButton extends React.Component {
   render() {
     return (
-      <button className='update-btn btn btn-default' onClick={(e) => {e.preventDefault(); this.props.updateTask(this.props.newEvent)}}>
+      <button className='update-btn btn btn-default' 
+            onClick={(e) => {e.preventDefault(); this.props.updateTask(this.props.newEvent)}}>
         <i className="fa fa-send-o" aria-hidden="true"> Submit</i>
       </button>
     );

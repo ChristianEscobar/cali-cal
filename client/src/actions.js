@@ -59,13 +59,52 @@ export const requestStarted = {
   type: actionNames.requestStarted,
 };
 
-export const saveCal = (dispatch) => {
-    dispatch(requestStarted);
-    setTimeout(()=>{
-        dispatch({
-            type: actionNames.requestComplete,
-        });
-    },1000);
+export const deleteTask = (taskId) => {
+  // let newdata = {
+  //   event:data.eventDetails.event,
+  //   startTime: data.eventDetails.start,
+  //   endTime: data.eventDetails.end,
+  //   dayID: data.dayId,
+  // };
+  
+  return function(dispatch) {
+    fetch('/api/tasks/'+ taskId, {
+      method: "delete",
+      // body: JSON.stringify(newdata),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "same-origin"
+    })
+    .then(function(response) {
+      if(response.status >= 400){
+        throw new Error ("bad request")
+      }
+       return response;
+    }) 
+    .then(function(tasks) {
+
+      console.log("some log: ",tasks);
+
+      // Call dispatch to reset the selected task to empty in the state store
+      let eventDetails = {
+        event: "",
+        start: "",
+        end: "",
+      };
+
+      console.log("action", eventDetails);
+
+      dispatch({
+        type: actionNames.changeSubmitted,
+        payload: { eventDetails },
+        
+      });
+      dispatch(loadInitState);
+    })
+    .catch((error)=>console.log(error));
+    };
+    
   };
 
 export const loadInitState = (dispatch) => {
