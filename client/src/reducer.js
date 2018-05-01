@@ -140,6 +140,14 @@ const reducer = (state = initialState, action) => {
         state,
         { formErrors: action.payload.formErrors,}
     );
+    case actionNames.settingEdit:
+      return Object.assign(
+        {},
+        state,
+        { editEvent: action.payload.editEvent,
+          eventDetails: action.payload.eventDetails,
+        }
+    );
     default:
       return state;
   }
