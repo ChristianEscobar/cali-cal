@@ -1,4 +1,3 @@
-
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
@@ -15,6 +14,7 @@ export const actionNames = {
   formErrors: "SET_FORM_ERRORS",
   settingEdit: "SET_EVENT_EDIT",
   formSubmit: "FORM_SUBMIT",
+  setAllDay: "SET_ALL_DAY",
 };
 
 export const editEvent = (id, event, start, end) => ({
@@ -165,28 +165,38 @@ export const updateTask = (data) => {
     };
   }
 
-export const newTask = (data) => {
+export const newTask = (data, isAllDay) => {
   // Build request body
+  // Start by checking if the event is an all day event
   let newTask = {
-    /*
     event: data.eventDetails.event,
-    startTime: data.eventDetails.start,
-    endTime: data.eventDetails.end,
-    */
-    event: data.eventDetails.event,
-    startTime: data.eventDetails.start,
-    endTime: data.eventDetails.end,
-  };
+    startTime: "",
+    endTime: "",
+  }
 
-  // Call backend API
+  if(isAllDay) {
+    // Hard coded for now, any other way???
+    newTask.startTime = "12:00";
+
+    newTask.endTime = "23:59";
+  } else {
+    newTask.startTime = data.eventDetails.start;
+
+    newTask.endTime = data.eventDetails.end;
+  }
+
+  // This object will be used to clear the state
+
+
+
+  // Call backend API, yes folks the below is Javascript closure!!!
   return function(dispatch) {
 
     dispatch({
       type: actionNames.requestStarted,
     });
 
-    //fetch('/api/tasks/'+ data.dayId, {
-    fetch('/api/tasks/2', {
+    fetch('/api/tasks/'+ data.dayId, {
       method: "POST",
       body: JSON.stringify(newTask),
       headers: {
@@ -198,6 +208,22 @@ export const newTask = (data) => {
       // Trigger dispatch signaling request complete
       dispatch({
         type: actionNames.requestComplete,
+      });
+
+      // Clear out event details from state
+      dispatch({
+        type: actionNames.changeEventDetails,
+        payload: {
+          eventDetails: {event: "", start: "", end: ""}
+        }
+      });
+
+      // Reset all day from state
+      dispatch({
+        type: actionNames.setAllDay, 
+        payload: {
+          allDay: false,
+        }
       });
     }) 
     .catch( error => {
@@ -246,5 +272,12 @@ export const turnEventEditOff = () => ({
       start: "",
       end: "",
     },
+  }
+});
+
+export const setAllDay = (allDay) => ({
+  type: actionNames.setAllDay,
+  payload: {
+    allDay,
   }
 });

@@ -70,17 +70,17 @@ export default class EventForm extends Component {
               </div>
               <div>
                 <label htmlFor="start">Start Time: </label>
-                <input required name="start" type="time" step="1800" value={this.props.event.eventDetails.start} onChange={this.handleChange}/>
+                <input required disabled={this.props.isAllDay.allDay} name="start" type="time" step="1800" value={this.props.event.eventDetails.start} onChange={this.handleChange}/>
                 <span>{this.props.formErrors.errors.start}</span>
               </div>
               <div>
                 <label htmlFor="end">End Time: </label>
-                <input required name="end" type="time" step="1800" value={this.props.event.eventDetails.end} onChange={this.handleChange}/>
+                <input required disabled={this.props.isAllDay.allDay} name="end" type="time" step="1800" value={this.props.event.eventDetails.end} onChange={this.handleChange}/>
                 <span>{this.props.formErrors.errors.end}</span>
               </div>
               <div>
                 <label htmlFor="allDay">All Day</label>
-                <input name="allDay" type="checkbox"/>
+                <input name="allDay" type="checkbox" onClick={ () => { (this.props.isAllDay.allDay) ? this.props.setAllDay(false) : this.props.setAllDay(true) } }/>
               </div>
               <div>
                 <CancelButton />

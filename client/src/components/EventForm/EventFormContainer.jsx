@@ -8,12 +8,14 @@ const mapStateToProps = (state) => ({
   selectedDay: selectors.getSelectedDay(state),
   editing: selectors.getEditValue(state),
   formErrors: selectors.getFormErrors(state),
-  updStatus:state.reducer.savingStateStatus,
+  updStatus: state.reducer.savingStateStatus,
+  isAllDay: selectors.getAllDay(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
   changeEventDetails: (newEventDetails) => dispatch(actions.changeEventDetails(newEventDetails)),
   setFormErrors: (errors) => dispatch(actions.setFormErrors(errors)),
+  setAllDay: (allDay) => dispatch(actions.setAllDay(allDay)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventForm);

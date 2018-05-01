@@ -41,3 +41,9 @@ export const getFormErrors = (state) => {
     errors: state.reducer.formErrors,
   } 
 }
+
+export const getAllDay = (state) => {
+  return {
+    allDay: state.reducer.allDay,
+  }
+}
