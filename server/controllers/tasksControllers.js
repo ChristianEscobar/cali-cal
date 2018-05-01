@@ -2,45 +2,35 @@ var db = require("../models");
 
 var Task = db.task;
 
-// Defining methods for the booksController
+// Defining methods for the tasksController
 module.exports = {
     //get all tasks
     findAll: function(req, res) {
         Task.findAll().
-            then(function(tasks){
-                res.send(tasks)
-        }); 
+            then(tasks => res.send(tasks)); 
     },
-    //get tasks by day
+    //get tasks by dayId
     findByDayId: function(req, res){
       Task.findAll({
-      where:{
-          dayID:req.params.id
-      }
+      where:{dayID:req.params.id}
     })
-    .then(function(tasks){
-      res.send(tasks)
-    })
+    .then(function(tasks){res.send(tasks)})
     },
     //delete a task
     remove: function(req, res) {
     Task.destroy({
-      where:{
-          id:req.params.id
-      }
+      where:{id:req.params.id}
     })
-    .then(() => res.send("Task deleted!"))
+    .then(() => res.status(200).send("Task deleted successfully"))
+    .catch(err => res.status(422).json(err))
     },
     //update a task by id
     update: function(req, res) {
-      console.log('body: ', req);
-      console.log("id: ", req.params.id);
       Task.update(req.body,{
-          where:{
-              id: req.params.id
-          }
+          where:{id: req.params.id}
       }).then(task => res.status(200).end())
     },
+    //create a task
     addEvent: function(req, res) {
       Task.create({
         userId: 1,
@@ -52,29 +42,4 @@ module.exports = {
       .then(newEvent => res.status(200).json(newEvent))
       .catch(err => res.status(500).json(err));
     },
-//   findById: function(req, res) {
-//     db.Book
-//       .findById(req.params.id)
-//       .then(dbModel => res.json(dbModel))
-//       .catch(err => res.status(422).json(err));
-//   },
-//   create: function(req, res) {
-//     db.Book
-//       .create(req.body)
-//       .then(dbModel => res.json(dbModel))
-//       .catch(err => res.status(422).json(err));
-//   },
-//   update: function(req, res) {
-//     db.Book
-//       .findOneAndUpdate({ _id: req.params.id }, req.body)
-//       .then(dbModel => res.json(dbModel))
-//       .catch(err => res.status(422).json(err));
-//   },
-//   remove: function(req, res) {
-//     db.Book
-//       .findById({ _id: req.params.id })
-//       .then(dbModel => dbModel.remove())
-//       .then(dbModel => res.json(dbModel))
-//       .catch(err => res.status(422).json(err));
-//   }
 };
