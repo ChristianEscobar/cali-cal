@@ -8,6 +8,13 @@ import CancelButton from '../CancelButton/CancelButtonContainer';
 import './EventForm.css';
 
 export default class EventForm extends Component {
+  //redirects to home route after task update  
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.updStatus === "updated") {
+      this.props.history.push('/');
+    }
+  };
+ 
   handleSubmit = (e) => {
     let errors = {};
 
@@ -21,6 +28,8 @@ export default class EventForm extends Component {
       // submit new task here
     }
   }
+
+ 
 
   handleChange = (e) => {
     // Update event details
@@ -42,7 +51,8 @@ export default class EventForm extends Component {
       this.props.changeEventDetails( eventDetails );
     }
   }
-  
+ 
+
   render() {
     console.log(this.props.editing);
     return(

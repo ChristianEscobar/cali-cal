@@ -8,6 +8,7 @@ const mapStateToProps = (state) => ({
   selectedDay: selectors.getSelectedDay(state),
   editing: selectors.getEditValue(state),
   formErrors: selectors.getFormErrors(state),
+  updStatus:state.reducer.savingStateStatus,
 });
 
 const mapDispatchToProps = (dispatch) => ({
