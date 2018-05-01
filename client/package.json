@@ -2,6 +2,14 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy": {
+    "/auth/google": {
+      "target": "http://localhost:3001"
+    },
+    "api/*": {
+      "target": "http://localhost:3001"
+    }
+  },
   "dependencies": {
     "es6-promise": "^4.2.4",
     "history": "^4.7.2",
@@ -21,6 +29,5 @@
     "build": "react-scripts build && rm -rf ../server/public && mv build ../server/public",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "proxy": "http://localhost:3001/"
+  }
 }
