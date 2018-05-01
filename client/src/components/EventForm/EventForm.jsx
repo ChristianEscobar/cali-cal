@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import Task from '../Task/TaskContainer';
 import Header from '../Header/Header';
 import UpdateButton from '../UpdateButton/UpdateButtonContainer';
+import SaveButton from '../SaveButton/SaveButtonContainer';
+import CancelButton from '../CancelButton/CancelButtonContainer';
 import './EventForm.css';
 
 export default class EventForm extends Component {
   handleSubmit = (e) => {
     let errors = {};
-
-    console.log(this.props.event.eventDetails.event);
 
     if(this.props.event.eventDetails.event === '') errors.event = "Value must be provided";
     if(this.props.event.eventDetails.start === '') errors.start = "Value must be provided";
@@ -44,6 +44,7 @@ export default class EventForm extends Component {
   }
   
   render() {
+    console.log(this.props.editing);
     return(
       <div>
         <div>
@@ -72,10 +73,8 @@ export default class EventForm extends Component {
                 <input name="allDay" type="checkbox"/>
               </div>
               <div>
-                <Link to="/">
-                  <button type="button">Cancel</button>
-                </Link>
-                <UpdateButton />
+                <CancelButton />
+                {(this.props.editing.editEvent) ? <UpdateButton /> : <SaveButton />}
               </div>
               {/*<button type="button" onClick={this.handleSubmit}>Submit</button>*/}
             </form>

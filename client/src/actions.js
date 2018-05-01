@@ -11,6 +11,8 @@ export const actionNames = {
   editEvent: "EDIT_EVENT",
   changeEventDetails: "CHANGE_EVENT_DETAILS",
   formErrors: "SET_FORM_ERRORS",
+  settingEdit: "SET_EVENT_EDIT",
+  formSubmit: "FORM_SUBMIT",
 };
 
 export const editEvent = (id, event, start, end) => ({
@@ -148,7 +150,7 @@ export const updateTask = (data) => {
 
       console.log("some log: ",tasks);
 
-      // Call dispatch to reset selected task to empty
+      // Call dispatch to reset the selected task to empty in the state store
       let eventDetails = {
         event: "",
         start: "",
@@ -166,8 +168,50 @@ export const updateTask = (data) => {
     };
   }
 
-export const saveTask = (data) => {
-  console.log("In saveTask");
+export const newTask = (data) => {
+  // Build request body
+  let newTask = {
+    /*
+    event: data.eventDetails.event,
+    startTime: data.eventDetails.start,
+    endTime: data.eventDetails.end,
+    */
+    event: data.eventDetails.event,
+    startTime: data.eventDetails.start,
+    endTime: data.eventDetails.end,
+  };
+
+  // Call backend API
+  return function(dispatch) {
+
+    dispatch({
+      type: actionNames.requestStarted,
+    });
+
+    //fetch('/api/tasks/'+ data.dayId, {
+    fetch('/api/tasks/2', {
+      method: "POST",
+      body: JSON.stringify(newTask),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "same-origin"
+    })
+    .then(response => {
+      // Trigger dispatch signaling request complete
+      dispatch({
+        type: actionNames.requestComplete,
+      });
+    }) 
+    .catch( error => {
+      console.error(error);
+
+      // Trigger dispatch signaling request error
+      dispatch({
+        type: actionNames.requestError,
+      });
+    });
+  }
 };
 
 
@@ -197,8 +241,13 @@ export const setFormErrors = (formErrors) => ({
   }
 });
 
-/*
-export function saveEvent(edit, requestBody) {
-  const url = (edit) ? "/api/task/:id"
-}
-*/
+export const turnEventEditOff = () => ({
+  type: actionNames.settingEdit,
+  payload: {
+    editEvent: false,
+    eventDetails: { event: "",
+      start: "",
+      end: "",
+    },
+  }
+});
