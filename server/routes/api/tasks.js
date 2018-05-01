@@ -4,15 +4,11 @@ const tasksController = require("../../controllers/tasksControllers");
 // Matches with "/api/tasks"
 router.route("/")
   .get(tasksController.findAll)
-//   .post(tasksController.create)
-//   .post(booksController.create);
    
 // Matches with "/api/tasks/:id"
 router.route("/:id")
-//   .get(booksController.findById)
     .get(tasksController.findByDayId)
     .put(tasksController.update)
-//   .delete(booksController.remove);
     .delete(tasksController.remove)
     .post(tasksController.addEvent)
 
