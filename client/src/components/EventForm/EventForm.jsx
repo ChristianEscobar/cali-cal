@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import Task from '../Task/TaskContainer';
 import Header from '../Header/Header';
 import UpdateButton from '../UpdateButton/UpdateButtonContainer';

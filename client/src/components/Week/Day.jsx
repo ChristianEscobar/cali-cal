@@ -8,7 +8,7 @@ export default class Day extends Component {
     // Set background color for selected day
     let className = this.props.selectedDay ? "events-container events-container-selected" : "events-container";
 
-    if (this.props.eventCount == 0) {
+    if (this.props.eventCount === 0) {
       return (
         <div className="day-container col-sm-12 col-lg-1">
           <div className='day text-center'>

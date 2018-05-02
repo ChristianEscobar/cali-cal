@@ -50,7 +50,7 @@ ul.dots a:hover {
 /*   color: #bdc3c7; */
 }
 ul.dots li {
-  display: box;
+  display: flex;
   position: relative;
   width: 100%;
   padding: 10px 0 ;  
