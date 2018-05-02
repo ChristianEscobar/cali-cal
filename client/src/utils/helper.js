@@ -18,3 +18,13 @@ export const dayID = (dayID) => {
         break;
   }
 };
+
+export const formValidation = (eventDetails) => {
+  let errors = {};
+
+  if(eventDetails.event === '') errors.event = "Value must be provided";
+  if(eventDetails.start === '') errors.start = "Value must be provided";
+  if(eventDetails.end === '') errors.end = "Value must be provided";
+
+  return errors;
+};
