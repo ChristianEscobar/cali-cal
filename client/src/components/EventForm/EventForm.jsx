@@ -71,17 +71,17 @@ export default class EventForm extends Component {
                 </div>
                 <div className = "group form-group">
                   <label htmlFor="start">Start Time: </label>
-                  <input className="form-control" required name="start" type="time" step="1800" value={this.props.event.eventDetails.start} onChange={this.handleChange}/>
+                  <input className="form-control" required disabled={this.props.isAllDay.allDay} name="start" type="time" step="1800" value={this.props.event.eventDetails.start} onChange={this.handleChange}/>
                   <span>{this.props.formErrors.errors.start}</span>
                 </div>
                 <div className = "group form-group">
                   <label htmlFor="end">End Time: </label>
-                  <input className="form-control"  required name="end" type="time" step="1800" value={this.props.event.eventDetails.end} onChange={this.handleChange}/>
+                  <input className="form-control"  required disabled={this.props.isAllDay.allDay} name="end" type="time" step="1800" value={this.props.event.eventDetails.end} onChange={this.handleChange}/>
                   <span>{this.props.formErrors.errors.end}</span>
                 </div>
                 <div className = "group form-group">
                   <label htmlFor="allDay">All Day</label>
-                  <input className="form-check" id="name" name="allDay" type="checkbox"/>
+                  <input className="form-check" id="name" name="allDay" type="checkbox" onClick={ () => { (this.props.isAllDay.allDay) ? this.props.setAllDay(false) : this.props.setAllDay(true) } } />
                 </div>
                 <div className = "buttons">
                   <CancelButton />

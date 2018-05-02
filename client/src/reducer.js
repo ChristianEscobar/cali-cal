@@ -21,6 +21,7 @@ export const initialState = {
   currentTask:0,
   editEvent: false,
   formErrors: {},
+  allDay: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -104,6 +105,14 @@ const reducer = (state = initialState, action) => {
         state,
         { editEvent: action.payload.editEvent,
           eventDetails: action.payload.eventDetails,
+        }
+    );
+    case actionNames.setAllDay:
+      return Object.assign(
+        {},
+        state,
+        { 
+          allDay: action.payload.allDay,
         }
     );
     default:
