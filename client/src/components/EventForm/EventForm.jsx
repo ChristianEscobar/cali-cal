@@ -15,6 +15,7 @@ export default class EventForm extends Component {
     }
   };
  
+  /*
   handleSubmit = (e) => {
     let errors = {};
 
@@ -28,9 +29,8 @@ export default class EventForm extends Component {
       // submit new task here
     }
   }
-
+  */
  
-
   handleChange = (e) => {
     // Update event details
     let eventDetails = Object.assign({}, this.props.event.eventDetails);
