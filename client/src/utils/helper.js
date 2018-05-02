@@ -20,6 +20,7 @@ export const dayID = (dayID) => {
 };
 
 export const formValidation = (eventDetails) => {
+
   let errors = {};
 
   if(eventDetails.event === '') errors.event = "Value must be provided";
