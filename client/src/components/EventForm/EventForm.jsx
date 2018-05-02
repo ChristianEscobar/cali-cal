@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import Task from '../Task/TaskContainer';
 import Header from '../Header/Header';
 import UpdateButton from '../UpdateButton/UpdateButtonContainer';
+import SaveButton from '../SaveButton/SaveButtonContainer';
+import CancelButton from '../CancelButton/CancelButtonContainer';
 import './EventForm.css';
 
 export default class EventForm extends Component {
@@ -15,8 +17,6 @@ export default class EventForm extends Component {
  
   handleSubmit = (e) => {
     let errors = {};
-
-    console.log(this.props.event.eventDetails.event);
 
     if(this.props.event.eventDetails.event === '') errors.event = "Value must be provided";
     if(this.props.event.eventDetails.start === '') errors.start = "Value must be provided";
@@ -54,6 +54,7 @@ export default class EventForm extends Component {
  
 
   render() {
+    console.log(this.props.editing);
     return(
       <div>
         <div>
@@ -69,23 +70,21 @@ export default class EventForm extends Component {
               </div>
               <div>
                 <label htmlFor="start">Start Time: </label>
-                <input required name="start" type="time" step="1800" value={this.props.event.eventDetails.start} onChange={this.handleChange}/>
+                <input required disabled={this.props.isAllDay.allDay} name="start" type="time" step="1800" value={this.props.event.eventDetails.start} onChange={this.handleChange}/>
                 <span>{this.props.formErrors.errors.start}</span>
               </div>
               <div>
                 <label htmlFor="end">End Time: </label>
-                <input required name="end" type="time" step="1800" value={this.props.event.eventDetails.end} onChange={this.handleChange}/>
+                <input required disabled={this.props.isAllDay.allDay} name="end" type="time" step="1800" value={this.props.event.eventDetails.end} onChange={this.handleChange}/>
                 <span>{this.props.formErrors.errors.end}</span>
               </div>
               <div>
                 <label htmlFor="allDay">All Day</label>
-                <input name="allDay" type="checkbox"/>
+                <input name="allDay" type="checkbox" onClick={ () => { (this.props.isAllDay.allDay) ? this.props.setAllDay(false) : this.props.setAllDay(true) } }/>
               </div>
               <div>
-                <Link to="/">
-                  <button type="button">Cancel</button>
-                </Link>
-                <UpdateButton />
+                <CancelButton />
+                {(this.props.editing.editEvent) ? <UpdateButton /> : <SaveButton />}
               </div>
               {/*<button type="button" onClick={this.handleSubmit}>Submit</button>*/}
             </form>
