@@ -62,35 +62,37 @@ export default class EventForm extends Component {
         </div>
         <div className="container">
           <div className="row">
-            <form>
-              <div>
-                <label htmlFor="event">Event: </label>
-                <input required name="event" type="input" value={this.props.event.eventDetails.event} onChange={this.handleChange}/>
-                <span>{this.props.formErrors.errors.event}</span>
-              </div>
-              <div>
-                <label htmlFor="start">Start Time: </label>
-                <input required name="start" type="time" step="1800" value={this.props.event.eventDetails.start} onChange={this.handleChange}/>
-                <span>{this.props.formErrors.errors.start}</span>
-              </div>
-              <div>
-                <label htmlFor="end">End Time: </label>
-                <input required name="end" type="time" step="1800" value={this.props.event.eventDetails.end} onChange={this.handleChange}/>
-                <span>{this.props.formErrors.errors.end}</span>
-              </div>
-              <div>
-                <label htmlFor="allDay">All Day</label>
-                <input name="allDay" type="checkbox"/>
-              </div>
-              <div>
-                <CancelButton />
-                {(this.props.editing.editEvent) ? <UpdateButton /> : <SaveButton />}
-              </div>
-              {/*<button type="button" onClick={this.handleSubmit}>Submit</button>*/}
-            </form>
-          </div>
-          <div className="row">
-            <Task />
+            <div className="col-md-6 col-sm-12">  
+              <form className="form-horizontal">
+                <div className="group form-group">
+                  <label htmlFor="event">Event: </label>
+                  <input className="form-control"  id="event" required name="event" type="input" value={this.props.event.eventDetails.event} onChange={this.handleChange}/>
+                  <span>{this.props.formErrors.errors.event}</span>
+                </div>
+                <div className = "group form-group">
+                  <label htmlFor="start">Start Time: </label>
+                  <input className="form-control" required name="start" type="time" step="1800" value={this.props.event.eventDetails.start} onChange={this.handleChange}/>
+                  <span>{this.props.formErrors.errors.start}</span>
+                </div>
+                <div className = "group form-group">
+                  <label htmlFor="end">End Time: </label>
+                  <input className="form-control"  required name="end" type="time" step="1800" value={this.props.event.eventDetails.end} onChange={this.handleChange}/>
+                  <span>{this.props.formErrors.errors.end}</span>
+                </div>
+                <div className = "group form-group">
+                  <label htmlFor="allDay">All Day</label>
+                  <input className="form-check" id="name" name="allDay" type="checkbox"/>
+                </div>
+                <div className = "buttons">
+                  <CancelButton />
+                  {(this.props.editing.editEvent) ? <UpdateButton /> : <SaveButton />}
+                </div>
+                {/*<button type="button" onClick={this.handleSubmit}>Submit</button>*/}
+              </form>
+            </div>
+            <div className="col-md-6 col-sm-12">
+                <Task />
+            </div>
           </div>
         </div>
       </div>
