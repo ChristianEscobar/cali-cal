@@ -29,8 +29,6 @@
     "build": "react-scripts build && rm -rf ../server/public && mv build ../server/public",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-<<<<<<< HEAD
-=======
   },
   "proxy": "http://localhost:3001/",
   "devDependencies": {
@@ -38,6 +36,5 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-latest": "^6.24.1",
     "babel-register": "^6.26.0"
->>>>>>> master
   }
 }
