@@ -11,6 +11,7 @@ export default class Task extends React.Component {
       container: {
         width:400,
         margin:20,
+        marginTop:0,
       },
     }
 
