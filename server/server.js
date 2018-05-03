@@ -23,6 +23,7 @@ app.use(passport.session());
 
 require('./routes/authRoutes/authRoutes')(app);
 // require('./routes/authRoutes/authRoutes')(app);
+require('./')
 
 
 // Test route
@@ -33,6 +34,6 @@ app.get("/hello", (req, res) => {
 app.use(express.static(`${__dirname}/public`));
 
 // Add routes, both API and view
-// app.use(routes);
+app.use(routes);
 
 module.exports = app;

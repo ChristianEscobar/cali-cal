@@ -230,6 +230,8 @@ export const newTask = (data, isAllDay) => {
 
   // Call backend API, yes folks the below is Javascript closure!!!
   return function(dispatch) {
+    console.log("action.js inside return");
+    console.log("newTask", newTask);
 
     dispatch({
       type: actionNames.requestStarted,
