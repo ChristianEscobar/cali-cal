@@ -17,7 +17,7 @@ export default class UpdateButton extends React.Component {
                 this.props.updateTask(this.props.newEvent);
               }
             }}>
-        <i className="fa fa-send-o" aria-hidden="true"> Submit</i>
+        <i className="fa fa-send-o" aria-hidden="true"> Update</i>
       </button>
     );
   }
