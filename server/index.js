@@ -21,7 +21,7 @@ const syncOptions = {}
 //     syncOptions.force = false;
 // }
 
-db.sequelize.sync({force:false})
+db.sequelize.sync({force:true})
     .then(() => {
         const server = app.listen(PORT, () => {
             console.log(`listening on port ${server.address().port}`);

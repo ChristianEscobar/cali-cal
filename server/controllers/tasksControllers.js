@@ -32,8 +32,9 @@ module.exports = {
     },
     //create a task
     addEvent: function(req, res) {
+      console.log("req.user", req.user);
       Task.create({
-        userId: 1,
+        userId: req.user.id,
         event: req.body.event,
         startTime: req.body.startTime,
         endTime: req.body.endTime,
