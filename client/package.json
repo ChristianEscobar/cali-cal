@@ -2,6 +2,14 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy": {
+    "/auth/google": {
+      "target": "http://localhost:3001"
+    },
+    "api/*": {
+      "target": "http://localhost:3001"
+    }
+  },
   "dependencies": {
     "es6-promise": "^4.2.4",
     "history": "^4.7.2",
