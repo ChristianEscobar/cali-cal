@@ -22,6 +22,7 @@ export const initialState = {
   editEvent: false,
   formErrors: {},
   allDay: false,
+  redirectHome: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -54,7 +55,7 @@ const reducer = (state = initialState, action) => {
       return Object.assign(
         {},
         state,
-        { days: action.days, savingStateStatus:"calendar days loaded" }
+        { days: action.days, savingStateStatus:"calendar days loaded", redirectHome: action.redirectHome }
       );
     case actionNames.editEvent:
       return Object.assign(
@@ -82,6 +83,7 @@ const reducer = (state = initialState, action) => {
         state,
         { 
           eventDetails: action.payload.eventDetails,
+          redirectHome: action.payload.redirectHome,
         }
     );
     case actionNames.changeSubmitted:
@@ -90,7 +92,8 @@ const reducer = (state = initialState, action) => {
         state,
         { 
           eventDetails: action.payload.eventDetails,
-          savingStateStatus:"updated"
+          savingStateStatus:"updated",
+          redirectHome: action.payload.redirectHome,
         }
     );
     case actionNames.formErrors:
