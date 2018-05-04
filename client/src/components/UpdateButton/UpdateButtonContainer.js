@@ -8,6 +8,7 @@ const mapStateToProps = (state) => ({
   newEvent: selectors.getSelectedEvent(state),
   formErrors: selectors.getFormErrors(state),
   isAllDay: selectors.getAllDay(state),
+  redirectHome: state.reducer.redirectHome,
 });
 
 const mapDispatchToProps = (dispatch) => ({
