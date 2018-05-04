@@ -1,24 +1,37 @@
 import React from 'react';
 import './UpdateButton.css';
 import { formValidation } from '../../utils/helper';
+import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 export default class UpdateButton extends React.Component {
+  renderRedirect = () => {
+
+    if (this.props.redirectHome) {
+      return <Redirect to='/'/>
+    }
+  }
+
   render() {
     return (
-      <button className='update-btn btn btn-default' 
-            onClick={(e) => {
-              e.preventDefault(); 
+      <div>
+        {this.renderRedirect()}
 
-              let errors = formValidation(this.props.newEvent.eventDetails, this.props.isAllDay);
+        <button className='update-btn btn btn-default' 
+              onClick={(e) => {
+                e.preventDefault(); 
 
-              if(Object.keys(errors).length > 0) {
-                this.props.setFormErrors(errors);
-              } else {
-                this.props.updateTask(this.props.newEvent);
-              }
-            }}>
-        <i className="fa fa-send-o" aria-hidden="true"> Update</i>
-      </button>
+                let errors = formValidation(this.props.newEvent.eventDetails, this.props.isAllDay);
+
+                if(Object.keys(errors).length > 0) {
+                  this.props.setFormErrors(errors);
+                } else {
+                  this.props.updateTask(this.props.newEvent);
+                }
+              }}>
+          <i className="fa fa-send-o" aria-hidden="true"> Update</i>
+        </button>
+      </div>
     );
   }
 }

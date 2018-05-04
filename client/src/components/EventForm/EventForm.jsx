@@ -7,28 +7,16 @@ import CancelButton from '../CancelButton/CancelButtonContainer';
 import './EventForm.css';
 
 export default class EventForm extends Component {
+  componentDidMount() {
+    console.log("component mounted");
+  }
+
   //redirects to home route after task update  
   componentWillReceiveProps(nextProps) {
     if (nextProps.updStatus === "updated") {
       this.props.history.push('/');
     }
   };
- 
-  /*
-  handleSubmit = (e) => {
-    let errors = {};
-
-    if(this.props.event.eventDetails.event === '') errors.event = "Value must be provided";
-    if(this.props.event.eventDetails.start === '') errors.start = "Value must be provided";
-    if(this.props.event.eventDetails.end === '') errors.end = "Value must be provided";
-
-    if(Object.keys(errors).length > 0) {
-      this.props.setFormErrors(errors);
-    } else {
-      // submit new task here
-    }
-  }
-  */
  
   handleChange = (e) => {
     // Update event details
@@ -53,7 +41,7 @@ export default class EventForm extends Component {
  
 
   render() {
-    console.log(this.props.editing);
+
     return(
       <div>
         <div>
@@ -84,7 +72,7 @@ export default class EventForm extends Component {
                 </div>
                 <div className = "buttons">
                   <CancelButton />
-                  {(this.props.editing.editEvent) ? <UpdateButton /> : <SaveButton />}
+                    {(this.props.editing.editEvent) ? <UpdateButton /> : <SaveButton />}
                 </div>
                 {/*<button type="button" onClick={this.handleSubmit}>Submit</button>*/}
               </form>

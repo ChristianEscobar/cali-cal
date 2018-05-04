@@ -152,6 +152,7 @@ export const loadInitState = (dispatch) => {
         dispatch({
           type: actionNames.setInitial,
           days: days,
+          redirectHome: false,
         });
       })
       .catch((error)=>console.log(error));
@@ -196,7 +197,7 @@ export const updateTask = (data) => {
 
       dispatch({
         type: actionNames.changeSubmitted,
-        payload: { eventDetails },
+        payload: { eventDetails, redirectHome: true },
         
       });
     })
@@ -253,7 +254,8 @@ export const newTask = (data, isAllDay) => {
       dispatch({
         type: actionNames.changeEventDetails,
         payload: {
-          eventDetails: {event: "", start: "", end: ""}
+          eventDetails: {event: "", start: "", end: ""},
+          redirectHome: true,
         }
       });
 
