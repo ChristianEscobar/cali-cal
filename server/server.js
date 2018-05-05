@@ -21,14 +21,14 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 require('./routes/authRoutes/authRoutes')(app);
 // require('./routes/authRoutes/authRoutes')(app);
 require('./')
 
-
 // Test route
 app.get("/hello", (req, res) => {
-  res.send("hello world");
+  res.json("hello world");
 });
 
 app.use(express.static(`${__dirname}/public`));

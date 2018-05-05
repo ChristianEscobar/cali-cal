@@ -10,6 +10,7 @@ const mapStateToProps = (state) => ({
   formErrors: selectors.getFormErrors(state),
   updStatus: state.reducer.savingStateStatus,
   isAllDay: selectors.getAllDay(state),
+  redirectHome: state.reducer.redirectHome,
 });
 
 const mapDispatchToProps = (dispatch) => ({

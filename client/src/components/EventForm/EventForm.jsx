@@ -8,12 +8,34 @@ import './EventForm.css';
 
 export default class EventForm extends Component {
   componentDidMount() {
-    console.log("component mounted");
+    fetch("/api/current_user", {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "same-origin"
+    })
+    .then( user => {
+      console.log("USER", user);
+      return user.json();
+    })
+    .then(json => {
+      console.log("JSON", json);
+      /*
+      if(json) {
+        return;
+      } else {
+        return <Redirect to="/auth/google"/>;
+      }
+      */
+    })
+    .catch( err => {
+      console.error("IN ERROR", err); 
+    });
   }
 
   //redirects to home route after task update  
   componentWillReceiveProps(nextProps) {
-    if (nextProps.updStatus === "updated") {
+    if (nextProps.updStatus === "updated" || nextProps.redirectHome) {
       this.props.history.push('/');
     }
   };
