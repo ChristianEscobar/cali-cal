@@ -264,6 +264,7 @@ export const newTask = (data, isAllDay) => {
         type: actionNames.setAllDay, 
         payload: {
           allDay: false,
+          redirectHome: true,
         }
       });
     }) 

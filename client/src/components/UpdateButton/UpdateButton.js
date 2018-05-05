@@ -1,22 +1,12 @@
 import React from 'react';
 import './UpdateButton.css';
 import { formValidation } from '../../utils/helper';
-import { Link } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
 
 export default class UpdateButton extends React.Component {
-  renderRedirect = () => {
-
-    if (this.props.redirectHome) {
-      return <Redirect to='/'/>
-    }
-  }
 
   render() {
     return (
       <div>
-        {this.renderRedirect()}
-
         <button className='update-btn btn btn-default' 
               onClick={(e) => {
                 e.preventDefault(); 
