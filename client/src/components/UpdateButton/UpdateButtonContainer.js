@@ -7,12 +7,12 @@ const mapStateToProps = (state) => ({
   taskId: selectors.getCurrentTask(state),
   newEvent: selectors.getSelectedEvent(state),
   formErrors: selectors.getFormErrors(state),
-  isAllDay: selectors.getAllDay(state),
+  isAllDay: state.reducer.allDay,
   redirectHome: state.reducer.redirectHome,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  updateTask: (event)=> dispatch(actions.updateTask(event)),
+  updateTask: (event, allDay)=> dispatch(actions.updateTask(event, allDay)),
   setFormErrors: (errors) => dispatch(actions.setFormErrors(errors)),
 });
 

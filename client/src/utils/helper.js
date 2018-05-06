@@ -19,13 +19,14 @@ export const dayID = (dayID) => {
   }
 };
 
-export const formValidation = (eventDetails) => {
+export const formValidation = (eventDetails, isAllDay) => {
 
+  console.log("formValidation", isAllDay, "eventDetails", eventDetails);
   let errors = {};
 
   if(eventDetails.event === '') errors.event = "Value must be provided";
-  if(eventDetails.start === '') errors.start = "Value must be provided";
-  if(eventDetails.end === '') errors.end = "Value must be provided";
+  if(eventDetails.start === '' && !isAllDay.allDay) errors.start = "Value must be provided";
+  if(eventDetails.end === '' && !isAllDay.allDay) errors.end = "Value must be provided";
 
   return errors;
 };

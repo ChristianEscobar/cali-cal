@@ -55,7 +55,12 @@ const reducer = (state = initialState, action) => {
       return Object.assign(
         {},
         state,
-        { days: action.days, savingStateStatus:"calendar days loaded", redirectHome: action.redirectHome }
+        { days: action.days, 
+          savingStateStatus:"calendar days loaded", 
+          redirectHome: action.redirectHome,
+          formErrors: action.formErrors, 
+          allDay: action.allDay,
+        }
       );
     case actionNames.editEvent:
       return Object.assign(
@@ -77,7 +82,6 @@ const reducer = (state = initialState, action) => {
         }
       );
     case actionNames.changeEventDetails:
-      console.log("reducer", action.payload);
       return Object.assign(
         {},
         state,

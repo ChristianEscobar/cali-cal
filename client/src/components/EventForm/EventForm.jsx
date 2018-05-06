@@ -7,6 +7,7 @@ import CancelButton from '../CancelButton/CancelButtonContainer';
 import './EventForm.css';
 
 export default class EventForm extends Component {
+  // The below is a work in progress...
   componentDidMount() {
     fetch("/api/current_user", {
       headers: {
@@ -49,7 +50,6 @@ export default class EventForm extends Component {
     if(!!this.props.formErrors.errors[e.target.name]) {
       let formErrors = Object.assign({}, this.props.formErrors);
       
-
       delete formErrors.errors[e.target.name];
 
       // Work around for changing input field containing error.

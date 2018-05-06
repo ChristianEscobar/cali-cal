@@ -16,7 +16,7 @@ export default class UpdateButton extends React.Component {
                 if(Object.keys(errors).length > 0) {
                   this.props.setFormErrors(errors);
                 } else {
-                  this.props.updateTask(this.props.newEvent);
+                  this.props.updateTask(this.props.newEvent, this.props.isAllDay);
                 }
               }}>
           <i className="fa fa-send-o" aria-hidden="true"> Update</i>
