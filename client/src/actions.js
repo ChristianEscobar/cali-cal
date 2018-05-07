@@ -153,20 +153,42 @@ export const loadInitState = (dispatch) => {
           type: actionNames.setInitial,
           days: days,
           redirectHome: false,
+          formErrors: {},
+          allDay: false,
         });
       })
       .catch((error)=>console.log(error));
 };
 
-export const updateTask = (data) => {
-
+export const updateTask = (data, isAllDay) => {
+  console.log("updateTask", isAllDay);
+  /*
   let newdata = {
-    event:data.eventDetails.event,
+    event: data.eventDetails.event,
     startTime: data.eventDetails.start,
     endTime: data.eventDetails.end,
     dayID: data.dayId,
   };
-  
+  */
+
+  let newdata = {
+    event: data.eventDetails.event,
+    startTime: "",
+    endTime: "",
+    dayID: data.dayId,
+  }
+
+  if(isAllDay) {
+    // Hard coded for now, any other way???
+    newdata.startTime = "12:00";
+
+    newdata.endTime = "23:59";
+  } else {
+    newdata.startTime = data.eventDetails.start;
+
+    newdata.endTime = data.eventDetails.end;
+  }
+
   return function(dispatch) {
     fetch('/api/tasks/'+ data.taskId, {
       method: "PUT",
@@ -193,7 +215,7 @@ export const updateTask = (data) => {
         end: "",
       };
 
-      console.log("action", eventDetails);
+      //console.log("action", eventDetails);
 
       dispatch({
         type: actionNames.changeSubmitted,
@@ -205,7 +227,7 @@ export const updateTask = (data) => {
     };
   }
 
-export const newTask = (data, isAllDay) => {
+export const saveTask = (data, isAllDay) => {
   // Build request body
   // Start by checking if the event is an all day event
   let newTask = {
@@ -250,18 +272,19 @@ export const newTask = (data, isAllDay) => {
         type: actionNames.requestComplete,
       });
 
-      // Clear out event details from state
+      // Clear out event details from state and errors
       dispatch({
         type: actionNames.changeEventDetails,
         payload: {
           eventDetails: {event: "", start: "", end: ""},
           redirectHome: true,
+          formErrors: {},
         }
       });
 
       // Reset all day from state
       dispatch({
-        type: actionNames.setAllDay, 
+        type: actionNames.setAllDay,
         payload: {
           allDay: false,
           redirectHome: true,
@@ -318,8 +341,8 @@ export const turnEventEditOff = () => ({
 });
 
 export const setAllDay = (allDay) => ({
-  type: actionNames.setAllDay,
-  payload: {
+    type: actionNames.setAllDay,
+    payload: {
     allDay,
   }
 });

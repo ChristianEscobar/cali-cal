@@ -11,7 +11,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  saveTask: (newEvent, isAllDay) => dispatch(actions.newTask(newEvent, isAllDay)),
+  saveTask: (newEvent, isAllDay) => dispatch(actions.saveTask(newEvent, isAllDay)),
   setFormErrors: (errors) => dispatch(actions.setFormErrors(errors)),
 });
 
