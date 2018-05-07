@@ -180,7 +180,7 @@ export const updateTask = (data, isAllDay) => {
 
   if(isAllDay) {
     // Hard coded for now, any other way???
-    newdata.startTime = "12:00";
+    newdata.startTime = "00:00";
 
     newdata.endTime = "23:59";
   } else {
@@ -238,7 +238,7 @@ export const saveTask = (data, isAllDay) => {
 
   if(isAllDay) {
     // Hard coded for now, any other way???
-    newTask.startTime = "12:00";
+    newTask.startTime = "00:00";
 
     newTask.endTime = "23:59";
   } else {
